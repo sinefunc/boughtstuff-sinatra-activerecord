@@ -1,0 +1,11 @@
+.DS_Store
+log/*.log
+log/*.log*
+tmp/**/*
+tmp/*
+config/database.yml
+db/*.sqlite3
+coverage
+public/secure_photos/*
+solr/**/*
+public/stylesheets/skins
