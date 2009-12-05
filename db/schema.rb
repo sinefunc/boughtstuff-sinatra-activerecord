@@ -10,11 +10,11 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20091205013529) do
-  create_table "schema_migrations", :force => true do |t|
+  create_table "schema_migrations", :id => false do |t|
     t.string   "name"
   end
 
-  create_table "users", :force => true do |t|
+  create_table "users" do |t|
     t.string   "twitter_id"
     t.string   "login"
     t.string   "access_token"
