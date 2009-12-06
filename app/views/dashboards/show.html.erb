@@ -1,0 +1,10 @@
+This is your dashboard
+<%= link_to 'Logout', session_path, :method => 'delete' %>
+
+<% form_for Item.new, :url => new_item_path, :html => { :method => 'get' } do |f| %>
+  <%= f.text_field :name %>
+  <%= submit_tag 'Submit' %>
+<% end %>
+<%= image_tag current_user.profile_image_url %>
+<hr />
+<%= debug current_user %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091205013529) do
+ActiveRecord::Schema.define(:version => 20091206103850) do
   create_table "schema_migrations", :id => false do |t|
     t.string   "name"
   end
@@ -42,5 +42,20 @@ ActiveRecord::Schema.define(:version => 20091205013529) do
     t.string   "time_zone"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table :items do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.text     "description"
+    t.date     "when"
+    t.string   "where"
+
+    t.column   :photo_file_name,    :string
+    t.column   :photo_content_type, :string
+    t.column   :photo_file_size,    :integer
+    t.column   :photo_updated_at,   :datetime
+
+    t.timestamps
   end
 end
