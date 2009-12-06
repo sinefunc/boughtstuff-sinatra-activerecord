@@ -9,12 +9,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091206103850) do
-  create_table "schema_migrations", :id => false do |t|
+ActiveRecord::Schema.define(:version => 20091206123025) do
+
+  create_table "items", :force => true do |t|
+    t.integer  "user_id"
     t.string   "name"
+    t.string   "currency"
+    t.integer  "cents"
+    t.integer  "dollar_price_in_cents"
+    t.text     "description"
+    t.date     "when"
+    t.string   "where"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "users" do |t|
+  add_index "items", ["user_id"], :name => "index_items_on_user_id"
+
+  create_table "users", :force => true do |t|
     t.string   "twitter_id"
     t.string   "login"
     t.string   "access_token"
@@ -44,18 +60,4 @@ ActiveRecord::Schema.define(:version => 20091206103850) do
     t.datetime "updated_at"
   end
 
-  create_table :items do |t|
-    t.string   "name"
-    t.integer  "price"
-    t.text     "description"
-    t.date     "when"
-    t.string   "where"
-
-    t.column   :photo_file_name,    :string
-    t.column   :photo_content_type, :string
-    t.column   :photo_file_size,    :integer
-    t.column   :photo_updated_at,   :datetime
-
-    t.timestamps
-  end
 end
