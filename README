@@ -1,6 +1,0 @@
-Loading the database
-====================
-
-rake db:auto:migrate
-
-

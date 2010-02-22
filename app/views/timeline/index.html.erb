@@ -1,7 +1,0 @@
-<%= link_to 'Logout', session_path, :method => 'delete' %>
-
-<ul class='tweets'>
-  <% for tweet in @tweets %>
-    <li><%= link_to tweet['user']['screen_name'] + ':', 'http://twitter.com/' + tweet['user']['screen_name'], :target => '_blank' %> <%= tweet['text'] %></li>
-  <% end %>
-</ul>
