@@ -1,0 +1,22 @@
+defaults: &DEFAULTS
+  adapter:  mysql
+  username: root
+  password:
+  encoding: utf8
+  pool:     5
+
+development:
+  <<: *DEFAULTS
+  database: boughtstuff_development
+
+test:
+  <<: *DEFAULTS
+  database: boughtstuff_test
+
+production:
+  adapter:  mysql
+  database: boughtstuff
+  username: boughtstuff
+  password: tzhSPhTiwlQfVjs5o54V
+  encoding: utf8
+  pool: 5

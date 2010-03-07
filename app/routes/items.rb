@@ -7,8 +7,9 @@ class Main
     end 
   end
 
-  get "/" do
-    @items = @account.items.sort(:order => "DESC")
+  get "/items" do
+    @items = @account.items.latest.paginate(:page => params[:page])
+
     haml :'items/index'
   end
 
@@ -35,6 +36,8 @@ class Main
   end
 
   get '/friends-items' do
+    @items = @account.friends_items.latest.paginate(:page => params[:page])
 
+    haml :'items/index'
   end
 end

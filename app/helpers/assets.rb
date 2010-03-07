@@ -1,5 +1,18 @@
 class Main
   helpers do
+    def image_tag( path, options = {} )
+      src = 
+        if path.index('/') == 0
+          "#{Boughtstuff::ASSET_HOST}#{path}"
+        elsif path.index('http') == 0
+          path
+        else
+          "#{Boughtstuff::ASSET_HOST}/images/#{path}"
+        end
+
+      %(<img src="#{src}" #{tag_options(options)} />)
+    end
+
     def stylesheet_link_merged( group )
       asset_packages_config['stylesheets'].first[group.to_s].map do |file|
         %(<link href="#{Boughtstuff::ASSET_HOST}/stylesheets/#{file}.css" 

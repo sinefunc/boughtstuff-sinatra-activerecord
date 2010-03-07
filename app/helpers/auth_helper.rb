@@ -5,7 +5,7 @@ class Main
     end
 
     def current_user
-      @current_user ||= (User[session[:user_id]] || Anonymous.new)
+      @current_user ||= (User.find_by_login(session[:user_id]) || Anonymous.new)
     end
 
     def current_user=( user )

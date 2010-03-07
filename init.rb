@@ -8,23 +8,23 @@ rescue LoadError
   require "dependencies"
 end
 
-require "monk/glue"
-require "ohm"
-require "haml"
-require "sass"
-require "twitter/login"
-require "chronic"
-require "i18n"
-require "active_support"
-require root_path('lib', 'uuid')
+%W(monk/glue haml twitter/login chronic open-uri i18n
+   active_support active_record mysql).each do |gem|
+  print " -> requiring #{gem}... "
+  require gem
+  puts  "Done!"
+end
+
+puts " -> requiring config files..." 
+require root_path('config', 'rails-compat')
 require root_path('config', 'boughtstuff')
+require root_path('config', 'sinefunc')
+require root_path('lib', 'format')
+require root_path('lib', 'item_url')
 
-# == Make sure we set Sinatra::Application.public first ==
-# == before we load carrier wave ==
-Sinatra::Application.public = root_path('public')
+I18n.backend.load_translations(root_path('config', 'locales', 'en.yml'))
 
-require "carrierwave"
-
+puts " -> initializing main."
 class Main < Monk::Glue
   enable :sessions
   set    :app_file, __FILE__
@@ -34,8 +34,10 @@ class Main < Monk::Glue
   helpers Twitter::Login::Helpers
 end
 
-# Connect to redis database.
-Ohm.connect(settings(:redis))
+ActiveRecord::Base.establish_connection(
+  YAML.load_file(root_path('config', 'database.yml'))[RACK_ENV]
+)
+ActiveRecord::Base.logger = logger
 
 # Load all application files.
 class Object

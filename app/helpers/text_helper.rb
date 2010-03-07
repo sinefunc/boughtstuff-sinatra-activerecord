@@ -5,7 +5,7 @@ class Main
       omission = options[:omission] || '...'
 
       if str and str.length > length
-        sprintf("%.#{length}#{omission}s", str)
+        sprintf("%.#{length}s#{omission}", str)
       else
         str
       end
