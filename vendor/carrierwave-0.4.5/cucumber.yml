@@ -1,2 +1,0 @@
-default: --format pretty --no-source
-html: --format html --out features.html
