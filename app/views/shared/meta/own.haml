@@ -1,0 +1,11 @@
+.col6-1.colR.clearFix.user-meta
+  %a.colR.twitter-pic{ :href => user_url(user), :title => user.name }
+    %img{ :src => user.avatar_url, :alt => user.name }
+  %h2
+    %a{ :href => user_url(user) }
+      Hello #{truncate(user.name, :length => 20)}
+  %p
+    You have bought
+    %strong
+      = number_to_currency(Spending.total(user))
+    worth of stuff.

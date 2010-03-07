@@ -19,14 +19,4 @@ class Test::Unit::TestCase
   def app
     Main.new
   end
-
-  def self.should_validate_presence_of( attribute )
-    should "validate presence of #{attribute}" do
-      assert_respond_to @model, attribute
-      @model.send("#{attribute}=", nil)
-      @model.valid?
-      
-      assert @model.errors.any? { |e| e.first == attribute && e.last == :not_present }
-    end
-  end
 end

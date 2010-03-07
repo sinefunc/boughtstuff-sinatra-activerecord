@@ -1,0 +1,22 @@
+--- 
+javascripts: 
+- base: 
+  - jquery
+  - jquery-ui
+  - jquery.form
+  - jquery.infieldlabel
+  - jquery.livequery
+  - base
+  - jquery.ubox
+  - jquery.ubox-photos
+  - boughtstuff.util
+  - boughtstuff.photos
+  - boughtstuff.remoteform
+  - application
+stylesheets: 
+- base: 
+  - reset
+  - grid
+  - application
+  - ubox
+  - hacks

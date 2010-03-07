@@ -1,0 +1,52 @@
+#shelf.col16-2.centerize
+  .shelf-content
+    %ul.notList.clearFix.shelf-items
+      - @items.each do |item|
+        %li.colL.col3-2.shelf-item{ :class => ('highlight' if item.new?) }[item]
+          - if item.new?
+            %em.ir.new-item-badge New Item
+          %a.item-link{ :href => absolute_item_url(item), :title => item.name }
+            = image_tag item.photo.url(:thumb), :alt => item.name
+          .item-details
+            - unless current_user == item.user
+              %a.contact-avatar{ :href => user_url(item.user) }
+                = user_avatar(item.user)
+
+            .col2-4.clearFix.item-meta
+              %h3.item-title.clearFix
+                - unless current_user == item.user
+                  = user_link_to item.user, :class => 'contact-link'
+                  \~
+                %a{ :href => item_path(item) }
+                  = truncate(item.name, :length => 20)
+                  
+              %p.item-price
+                %abbr{ :title => item.price_in_dollars }
+                  = truncate(number_to_currency(item.price_in_dollars), :length => 15)
+              %ul.notList.item-actions
+                %li.action-hook
+                  %ul.notList.actions-menu
+                    %li.view-item
+                      %a{ :href => absolute_item_url(item) }
+                        View
+
+                      - if logged_in?
+                        %li.like-item[item, :unlike]{show_if(current_user.likes?(item))}
+                          %a.unlike-link{ :href => like_path(item.id) }
+                            Un-like
+                        %li.like-item[item, :like]{hide_if(current_user.likes?(item))}
+                          %a.like-link{ :href => likes_path(:item_id => item.id) }
+                            Like
+
+                    %li.reply-item
+                      %a{ :href => new_reply_path(:item_id => item) }
+                        Reply
+                    %li.dm-item.hide
+                      %a{ :href => "#" }
+                        DM
+
+                    %li.rt-item
+                      %a{ :href => "#" }
+                        RT
+  .bottom-shelf
+    = pagination @items

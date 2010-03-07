@@ -1,0 +1,70 @@
+.clearFix.col16-2.centerize.single-item-card
+  .clearFix.single-item-title
+    %h2.col12-0.colL
+      = @item.name
+    %ul.colR.notList.clearFix.item-actions
+      - if logged_in?
+        %li.colL.like-item[@item, :unlike]{show_if(current_user.likes?(@item))}
+          %a.unlike-link{ :href => like_path(@item.id) }
+            Un-like
+        %li.colL.like-item[@item, :like]{hide_if(current_user.likes?(@item))}
+          %a.like-link{ :href => likes_path(:item_id => @item.id) }
+            Like
+      %li.colL.reply-item
+        %a{ :href => "#" }
+          Reply
+      %li.colL.rt-item
+        %a{ :href => "#" }
+          RT
+      - unless current_user == @item.user
+        %li.colL.dm-item
+          %a{ :href => "#" }
+            DM
+          
+      
+  %dl.notList.clearFix.single-item-meta
+    %dt.colL
+      Bought by:
+    %dd.colL.twitter-link
+      = link_to h(@item.user.name), "http://twitter.com/#{@item.user.login}"
+    %dt.colL
+      for
+    %dd.colL.price
+      = number_to_currency(@item.price_in_dollars)
+
+    - if @item.when?
+      %dt.colL
+        on
+      %dd.colL
+        = @item.when
+    - if @item.where?
+      %dt.colL
+        at
+      %dd.colL
+        = @item.where
+  .col4-0.colL
+    .col3-2.item-preview
+      %a.ir.zoom-link{ :href => '#item-image', :title => @item.name, :rel => 'ubox' }
+        zoom
+      %a.item-link{ :href => '#item-image', :title => @item.name, :rel=>'ubox' }
+        %img{ :src => @item.photo.url(:thumb), :alt => @item.name }
+      .item-details
+        - unless current_user == @item.user
+          %a.contact-avatar{ :href => user_url(@item.user) }
+            = user_avatar(@item.user)
+  .colR.col11-4.item-blurb
+    - if @item.body?
+      %p
+        = @item.body      
+    - else
+      %p
+        %em
+          Nothing written about this item.
+    %ul.notList.clearFix.tag-list
+      - @item.tags.each do |tag|
+        %li.colL
+          %a{ :href => tagged_items_path(tag.name) }= tag.name
+
+#item-image
+  =link_to 'close this', 'javascript:void(0);', :rel=>"ubox-close", :class => "ubox-close"
+  %img{:src => @item.photo.url(:large), :alt => @item.name}

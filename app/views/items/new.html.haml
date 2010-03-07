@@ -1,0 +1,88 @@
+.clear.col16-2.clearFix.centerize.create-item-form
+  - form_for(@item, :html => { :multipart => true }) do |f|
+    %fieldset.col11-1.colL.item-form
+      %legend
+        %strong.form-head
+          New stuff you bought
+
+      %label.col10-1.first-field(for='item_name')
+        %span.label
+          What did you buy?
+        %em.faux-value
+          One bucket of unicorn tears
+        = f.text_field :name, :class => 'col10-0 text-field'
+        = f.errors_for :name, :full => true
+
+      %label.col10-1(for='item_price_in_dollars')
+        %span.label
+          How much was it?
+        %span.currency
+          $
+        %em.faux-value.currency
+          899.99
+        = f.text_field :price_in_dollars, :class => 'col3-2 text-field'
+        = f.errors_for :price_in_dollars, :full => true
+      
+      %label.colL.photo-field.col4-1(for='item_photo')
+        %span.label
+          Upload a photo of that item
+        = f.file_field :photo
+        = f.errors_for :photo
+
+      %label.colL.or-label
+        %span.ir
+          Or
+      
+      %label.colL(for='item_photo_url')  
+        %span.label
+          Enter photo url
+        %em.faux-value
+          http://photo-url-here.com
+        = f.text_field :photo_url, :class => 'text-field'
+
+      %label.clear.col10-1.optional-fields(for='item_where')
+        %span.label
+          The optional Stuff Yo
+
+      %label.col10-1(for='item_where')
+        %span.label
+          Where did you buy it?
+        %em.faux-value
+          Apple Store, Fifth Avenue, New York City, NY
+        = f.text_field :where, :class => 'col10-0 text-field'
+
+      %label.col10-1(for='item_when')
+        %span.label
+          When did you buy it?
+        %em.faux-value
+          e.g. Today, Yesterday, Last Night, Last Friday
+        = f.text_field :when, :class => 'col10-0 text-field'
+
+      %label.col10-1(for='item_description')
+        %span.label
+          Tell us a little something about it
+        %em.faux-value
+          The best batch of unicorn tears ever! highly recommended for 
+          those looking for an excellent energy source.
+  
+        = f.text_area :description, :class => 'col10-0 text-field', :size => '30x10'
+      %label.col10-1(for='item_tag_list')
+        %span.label
+          Tags
+          %em.hint
+            (pretty little words separated by commas to describe it)
+        %em.faux-value
+          awesome, unicorn tears, technology
+        = f.text_field :tag_list, :class => 'col10-0 text-field'
+
+      %input.button{ :name => "commit", :type => "submit", :value => "Submit &amp; Tweet!" }
+      = image_tag 'spinner.gif', :alt => 'Please wait...', :class => 'centerize hide spinner'
+    .colR.col4-2.check-it-out
+      .col3-2.item-preview
+        %a.item-link{ :href => "#" }
+          = image_tag '/photos/thumb/missing.jpg', :alt => "No Photo"
+        %a.ir.zoom-link{ :href => "#" }
+          zoom
+      %h3
+        Check it out!
+

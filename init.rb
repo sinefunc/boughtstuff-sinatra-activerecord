@@ -14,21 +14,36 @@ require "haml"
 require "sass"
 require "twitter/login"
 require "chronic"
-require ROOT_DIR + '/lib/uuid'
+require "i18n"
+require "active_support"
+require root_path('lib', 'uuid')
+require root_path('config', 'boughtstuff')
+
+# == Make sure we set Sinatra::Application.public first ==
+# == before we load carrier wave ==
+Sinatra::Application.public = root_path('public')
+
+require "carrierwave"
 
 class Main < Monk::Glue
   enable :sessions
-  set :app_file, __FILE__
-  use Rack::Session::Cookie
-  use Twitter::Login, 
-    consumer_key: "2YTK8XIszlR12aVju0tA", 
-    secret:       "lcO2ulMC2dhAS1dvEQz7qT4fCsMFKDrqpF9BSyw2A8"
+  set    :app_file, __FILE__
+
+  use     Rack::Session::Cookie, Boughtstuff::SESSION_OPTIONS
+  use     Twitter::Login, Boughtstuff::TWITTER_LOGIN_OPTIONS
+  helpers Twitter::Login::Helpers
 end
 
 # Connect to redis database.
 Ohm.connect(settings(:redis))
 
 # Load all application files.
+class Object
+  Dir[root_path("app/models/*.rb")].each do |file|
+    autoload File.basename(file, '.rb').camelize, file
+  end
+end
+
 Dir[root_path("app/**/*.rb")].each do |file|
   require file
 end

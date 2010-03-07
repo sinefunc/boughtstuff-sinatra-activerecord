@@ -1,0 +1,57 @@
+/* 
+ * uBox CSS
+ * Note that this file is completely optional. Without it, though,
+ * you'll miss out on the translucent black border and the AJAX loading
+ * screen.
+ *
+ * Structure:
+ * #ubox-container
+ *   #ubox-subcontainer
+ *     .ubox-loader
+ *     .ubox-window
+ *
+ * (When .ubox-loader is visible, .ubox-window would be hidden, and vice versa)
+ */
+
+/*
+ * #ubox-container / #ubox-subcontainer
+ * The grand container, and it's offspring.
+ * Everything is inside subcontainer.
+ */
+ 
+#ubox-container
+{
+    padding: 10px; background: url(/images/ubox-bg.png);
+    border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="ubox-bg.png", sizingMethod="crop");
+}
+
+#ubox-subcontainer
+    { background: white; }
+
+/*
+ * .ubox-loader
+ * The AJAX loading screen
+ */
+ 
+.ubox-loader
+{
+    width: 100px; height: 100px;
+    background: #fff url(/images/ubox-load.gif) center center no-repeat;
+}
+
+/*
+ * .ubox-content
+ * Content screen
+ * (Tip: you're probably editing htis file to adjust this padding value)
+ */
+ 
+.ubox-content
+{
+    padding: 10px; background: white;
+}
+
+/* Ubox */
+.ubox-content { position: relative; overflow: none; }
+.ubox-content a.ubox-close { position: absolute; top: -19px; right: -19px; display: block; width: 42px; height: 40px; background: url(/images/ubox-close.png); text-indent: -9999px; }
+.ubox-content a.ubox-close:hover { background-position: -42px 0; }

@@ -1,0 +1,36 @@
+/* ©2008 Copyright Marco Severo M. Palinar - Creative Commons (Attribution,No-Derivatives,Non-Commercial) */
+/* =Clearfix Hack for IE6 and IE7 */
+* + html .clearFix{zoom:1;}
+* html .clearFix{zoom: 1;}
+* html .clear{zoom:1;}
+* + html .clear{zoom:1;}
+/* =Double Margin Fix for IE6 and IE7 */
+* html .colL{display:inline !important;list-style:outside;}
+* + html .colL{display:inline !important;list-style:outside;}
+* html .colR{display:inline !important;list-style:outside;}
+* + html .colR{display:inline !important;list-style:outside;}
+
+* html .btn {width:100%}
+* html .ieBtnHack, * html .ieBtnHack * {padding: 0; margin: 0;}
+
+* html button { 
+  width:auto; 
+  overflow:visible; 
+}
+
+* html button span { 
+  margin-top:1px; 
+}
+
+body:-moz-last-node .submitBtn {padding: 0 18px 0 0;}
+
+
+* + html .boughtstuff-form .text-input {width: 560px !important;}
+* + html .boughtstuff-form .label {display: inline-block; margin-top: -55px; }
+* + html .boughtstuff-form label.colL {height: 48px;}
+* + html #shelf .shelf-items .shelf-item {position: relative !important;}
+* + html #shelf .shelf-items .shelf-item:hover {z-index: 9999;}
+* + html #shelf .shelf-items .shelf-item:hover + .shelf-item { zoom: 1;}
+* + html #shelf .shelf-items .shelf-item .item-meta {padding-bottom: 0px;}
+* + html ul.page-numbers li {display: inline !important;}
+* + html ul.pagination li.prev-link + li {display: inline !important;}

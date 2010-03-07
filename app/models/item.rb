@@ -1,9 +1,13 @@
-require 'app/models/user'
-
 class Item < Ohm::Model
-  DATE_FORMAT = "%Y-%m-%d"
+  include CallbackConcerns
+  include RaiseOnInvalidConcerns
+  include PriceConcerns
+  include SpendingConcerns
+  include DateParsingConcerns
+  include Timestamping
 
-  reference :user, User
+  reference  :user,  User
+  collection :items, Item
 
   # - CORE FIELDS -
   attribute :name
@@ -20,8 +24,7 @@ class Item < Ohm::Model
   attribute :photo_file_size
   attribute :photo_updated_at
   
-  attribute :created_at
-  attribute :updated_at
+  attribute :timestamp
 
   counter   :likes_count
   counter   :views_count
@@ -32,48 +35,21 @@ class Item < Ohm::Model
     assert_present :name
     assert_present :price_in_dollars
     assert_present :photo
-    
+    assert_present :user
+
     assert valid_amount?(price_in_dollars), [ :price_in_dollars, :not_numeric ]
   end
 
-
-  def price_in_dollars=( amount )
-    self.price = (amount.to_f * 100) if valid_amount?(amount)
-    @price_in_dollars = amount
-  end
-
-  def price_in_dollars
-    if price
-      @price_in_dollars ||= (price.to_f / 100)
-    else
-      @price_in_dollars
-    end
-  end
-
-  def when=( date_time_or_string )
-    case date_time_or_string
-    when Date, Time, DateTime
-      write_local(:when, date_time_or_string.strftime(DATE_FORMAT))
-    when String     
-      if parsed = Chronic.parse(date_time_or_string, :now => Time.now.utc)
-        write_local(:when, parsed.strftime(DATE_FORMAT))
-      end
-    end
+  def when=( date )
+    write_date( :when, date )
   end
 
   def when
-    if val = read_local(:when) 
-      Date.new(*val.split('-').map(&:to_i))
-    end
+    read_date( :when )
   end
-  private
-    def valid_amount?( amount )
-      begin
-        val = Kernel.Float(amount)
-      rescue ArgumentError, TypeError
-        return false
-      else
-        val >= 0
-      end
-    end
+
+  def to_s
+    name    
+  end
+  alias :inspect :to_s
 end

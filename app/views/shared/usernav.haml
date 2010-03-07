@@ -1,0 +1,49 @@
+.boughtstuff-user-nav
+  .col16-2.centerize.clearFix
+    - viewing_own_account do
+      = navigation do
+        = nav_item "Your shelf", items_path, '/'
+        = nav_item "Your friends", friends_items_path, 'friends_items'
+        = nav_item "Everyone", everyone_items_url
+
+      = partial 'shared/meta/own', :user => current_user
+
+    - viewing_other_account do
+      = navigation do
+        = nav_item t('persons_shelf', :person => @account), items_path, 'items'
+        = nav_item t('persons_friends', :person => @account), friends_items_path, 'friends_items'
+        = nav_item "Everyone", everyone_items_url
+
+      = partial 'shared/meta/other', :user => @account
+
+    - viewing_no_account do
+      = navigation do
+        = nav_item 'Everyone', everyone_items_url, [ 'items', 'most-liked' ]
+        = nav_item 'Popular', most_viewed_url, 'most-viewed'
+
+      = partial 'shared/meta/all'
+
+  .subnav.clearFix
+    .col16-2.centerize
+      - show_toggling do
+        %ul.notList.clearFix.colL.subnav-switch
+          %li.colL{active_if('#index')}
+            = link_to 'Bought', :action => 'index'
+          %li.colR{active_if('#liked')}
+            = link_to 'Liked', :action => 'liked'
+
+      - logged_in do
+        %ul.notList.colR.meta-nav
+          - not_viewing_own_account do
+            %li.colL.back-link
+              = link_to 'Back to your shelf', user_url(current_user)
+            - if inside?('items#get')
+              %li.colL.back-link
+                = link_to "Back to #{@account}'s shelf", user_url(@account)
+          %li.colL.logout-nav
+            = link_to 'Logout', logout_url
+
+      - logged_out do
+        %ul.notList.colR.meta-nav      
+          %li.colL.login-nav
+            %a{ :href => login_url } Login to Twitter

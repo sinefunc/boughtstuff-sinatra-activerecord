@@ -67,3 +67,34 @@ describe "given today is April fools" do
   end
 end
 
+describe Item, "sorting by id" do
+  context "given an item posted right now then later" do
+    before( :each ) do
+      @first  = Factory(:item)
+      @second = Factory(:item)
+    end
+
+    it "should return the latest item first" do
+      items = Item.all.sort(:order => "DESC")
+      items.first.should == @second
+    end
+
+    it "should return the first item last" do
+      items = Item.all.sort(:order => "DESC")
+      items.last.should == @first
+    end
+  end
+end
+
+describe Item, "given three samples" do
+  before( :each ) do
+    @item1 = Factory(:item, :name => "Macbook Pro") 
+    @item2 = Factory(:item, :name => "iPod Touch") 
+    @item3 = Factory(:item, :name => "iMac 27") 
+  end
+  
+  it "should bla" do
+   puts [ @item1.user_id, @item2.user_id, @item3.user_id ].inspect
+    puts Item.find(user_id: [ @item1.user_id, @item2.user_id, @item3.user_id ]).all
+  end
+end

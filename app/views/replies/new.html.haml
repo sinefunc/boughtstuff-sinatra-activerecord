@@ -1,0 +1,18 @@
+.initial
+  %h1 Replying to #{h(@reply.item.user)} about #{h(@item.name)}
+
+  - form_for @reply, :html => { :rel => @reply.class.model_name.underscore, :class => 'remote-form' } do |f|
+
+    %label(for='reply_body')
+      %span Write something to say
+      = f.text_area    :body
+      = f.hidden_field :item_id
+
+    %input.button{ :name => "commit", :type => "submit", :value => "Reply" }
+    or 
+    %a{ :href => '#', :rel => "ubox-close" } Cancel
+
+.success.hide
+  %h1 You have successfully sent a reply to #{h(@reply.item.user)}
+
+  %a{ :href => '#', :rel => "ubox-close" } Close

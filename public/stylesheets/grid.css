@@ -1,0 +1,166 @@
+/* ©2008 Copyright Marco Severo M. Palinar - Creative Commons (Attribution,No-Derivatives,Non-Commercial) Append CSS Framework */
+/* =Grid Elements*/
+.colL{float:left;}
+.colR{float:right;}
+.block{float:none;}
+/* =Image Replacement Class */
+.ir{height:0 !important;padding:0;overflow:hidden !important;display:block !important;}
+/* =Zero Exception Classes */
+.noBullet{list-style:none !important;}
+.bulleted{list-style:disc outside;}
+.noBor{border:0 !important;}
+.noBg{background:none !important;}
+.noImg{background-image:none !important;}
+.noMT{margin-top:0 !important;}
+.noMB{margin-bottom:0 !important;}
+.noML{margin-left:0 !important;}
+.noMR{margin-right:0 !important;}
+.noPB{padding-bottom:0 !important;}
+.noPT{padding-top:0 !important;}
+.noPL{padding-left:0 !important;}
+.noPR{padding-right:0 !important;}
+.lowerC{text-transform:lowercase !important;}
+.null, .null * {margin:0;padding:0;border:0;outline:0;font-size:100.01%;vertical-align:baseline;background:transparent;list-style:none !important; }
+ul.notList, ol.notList, dl.notList{list-style:none outside !important;margin:0;}
+ul.notList li, ol.notList li, dl.notList li {padding: 0;}
+/* =Clearing */
+.clearFix:after{height:0;content:" ";clear:both;font-size:0;line-height:0;margin:0;padding:0;visibility:hidden;display:block;}
+.clearFix{display:block;}
+.clear{clear:both;display:block;}
+.clearL{clear:left;}
+/* =Hide / Show Classes */
+.hide{display:none !important;}
+/* ==Margin Units */
+.MR3{margin-right:3px !important;}
+.MR5{margin-right:5px !important;}
+.MR10{margin-right:10px !important;}
+.MR20{margin-right:30px !important;}
+.MT5{margin-top:5px !important;}
+.MT8{margin-top:8px !important;}
+.MT10{margin-top:10px !important;}
+.MT20{margin-top:20px !important;}
+.ML10{margin-left:10px !important;}
+.ML5{margin-left:5px !important;}
+.MB10{margin-bottom:10px !important;}
+.MB20{margin-bottom:20px !important;}
+.MB30{margin-bottom:30px !important;}
+.PR10{padding-left:10px !important;}
+.PR5{padding-right:5px !important;}
+.PR10{padding-right:10px !important;}
+.PL20{padding-left:20px !important;}
+.PR20{padding-right:20px !important;}
+.centerize{margin-left:auto !important;margin-right:auto !important;display:block;}
+.lefterize{margin-left:0 !important;margin-right:auto !important;display:block;}
+.righterize{margin-left:auto !important;margin-right:0 !important;display:block;}
+/* Grid Syntax:.col{# of columns}
+-{number of gutters}
+*/
+/* ==1 Column */
+.col1-4{width:80px;}
+.col1-3{width:70px;}
+.col1-2{width:60px;}
+.col1-1{width:50px;}
+.col1-0{width:40px;}
+/* ==2 Columns */
+.col2-4{width:140px;}
+.col2-3{width:130px;}
+.col2-2{width:120px;}
+.col2-1{width:110px;}
+.col2-0{width:100px;}
+/* ==3 Columns */
+.col3-4{width:200px;}
+.col3-3{width:190px;}
+.col3-2{width:180px;}
+.col3-1{width:170px;}
+.col3-0{width:160px;}
+/* ==4 Columns */
+.col4-4{width:260px;}
+.col4-3{width:250px;}
+.col4-2{width:240px;}
+.col4-1{width:230px;}
+.col4-0{width:220px;}
+/* ==5 Columns */
+.col5-4{width:320px;}
+.col5-3{width:310px;}
+.col5-2{width:300px;}
+.col5-1{width:290px;}
+.col5-0{width:280px;}
+/* ==6 Columns */
+.col6-4{width:380px;}
+.col6-3{width:370px;}
+.col6-2{width:360px;}
+.col6-1{width:350px;}
+.col6-0{width:340px;}
+/* ==7 Columns */
+.col7-4{width:440px;}
+.col7-3{width:430px;}
+.col7-2{width:420px;}
+.col7-1{width:410px;}
+.col7-0{width:400px;}
+/* ==8 Columns */
+.col8-4{width:500px;}
+.col8-3{width:490px;}
+.col8-2{width:480px;}
+.col8-1{width:470px;}
+.col8-0{width:460px;}
+/* ==9 Columns */
+.col9-4{width:560px;}
+.col9-3{width:550px;}
+.col9-2{width:540px;}
+.col9-1{width:530px;}
+.col9-0{width:520px;}
+/* ==10 Columns */
+.col10-4{width:620px;}
+.col10-3{width:610px;}
+.col10-2{width:600px;}
+.col10-1{width:590px;}
+.col10-0{width:580px;}
+/* ==11 Columns */
+.col11-4{width:680px;}
+.col11-3{width:670px;}
+.col11-2{width:660px;}
+.col11-1{width:650px;}
+.col11-0{width:640px;}
+/* ==12 Columns */
+.col12-4{width:740px;}
+.col12-3{width:730px;}
+.col12-2{width:720px;}
+.col12-1{width:710px;}
+.col12-0{width:700px;}
+/* ==13 Columns */
+.col13-4{width:800px;}
+.col13-3{width:790px;}
+.col13-2{width:780px;}
+.col13-1{width:770px;}
+.col13-0{width:760px;}
+/* ==14 Columns */
+.col14-4{width:860px;}
+.col14-3{width:850px;}
+.col14-2{width:840px;}
+.col14-1{width:830px;}
+.col14-0{width:820px;}
+/* ==15 Columns */
+.col15-4{width:920px;}
+.col15-3{width:910px;}
+.col15-2{width:900px;}
+.col15-1{width:890px;}
+.col15-0{width:880px;}
+/* ==16 Columns */
+.col16-4{width:980px;}
+.col16-3{width:970px;}
+.col16-2{width:960px;}
+.col16-1{width:950px;}
+.col16-0{width:940px;}
+/* ==text-alignment */
+.alignR{text-align:right;}
+.alignL{text-align:left;}
+.alignC{text-align:center;}
+.inner{margin:0 20px;}
+
+button{border:0;cursor:pointer;font-weight:bold;padding:0 20px 0 0; text-align:center;}
+button span{position:relative;display:block;white-space:nowrap;padding:0 0 0 20px;}
+/*blue buttons*/
+button.submitBtn{background:url(/images/submitBtnBg) 100% -42px no-repeat;font-size:12px;}
+button.submitBtn span{height:42px;line-height:42px;background:url(/images/submitBtnBg.png) 0 0 no-repeat;color: #828282;}
+button.submitBtn:hover{background-image:url(/images/submitBtnBgHover.png);}
+button.submitBtn:hover span{background-image:url(/images/submitBtnBgHover.png);color: #10b5d5;}
