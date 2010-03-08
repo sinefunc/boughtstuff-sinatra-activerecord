@@ -5,7 +5,13 @@ class Main
     end
 
     def nav_item( text, url_options, args = nil )
-      options = active_if(*Array(args))
+      options = 
+        if args
+          active_if(*Array(args))
+        else
+          active_if( url_options )
+        end
+
       options ||= {}
       options[:class] = "colL #{options[:class]}"
 

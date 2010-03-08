@@ -4,10 +4,6 @@ class Main
       Rack::Utils.escape_html(text)
     end
     
-    def partial(template, locals = {})
-      super( template.to_sym, locals ) 
-    end
-
     def haml(template, options = {}, locals = {})
       options[:escape_html] = false unless options.include?(:escape_html)
       super(template, options, locals)

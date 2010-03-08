@@ -52,6 +52,10 @@ class Main
     def items_path
       '/items'
     end
+    
+    def liked_path
+      '/liked'
+    end
 
     def friends_items_path
       '/friends-items' 

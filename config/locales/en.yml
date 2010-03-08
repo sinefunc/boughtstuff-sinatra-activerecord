@@ -11,4 +11,4 @@ en:
   
   persons_shelf: "{{person}}'s shelf"
   persons_friends: "{{person}}'s friends"
-    
+  back_to_persons_shelf: "Back to {{person}}'s shelf"

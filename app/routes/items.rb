@@ -18,13 +18,15 @@ class Main
   end
 
   get "/most-viewed" do
-    @items = @account.items.sort(:order => "DESC")
+    @items = @account.items.latest.paginate(page: params[:page])
 
     haml :'items/index'
   end
 
   get "/items/new" do
+    @item = Item.new
 
+    haml :'items/new'
   end
 
   post "/items" do

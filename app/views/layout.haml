@@ -9,14 +9,9 @@
     %meta{ :name => "asset-host", :content => Boughtstuff::ASSET_HOST }
 
   %body
-    = partial 'shared/toppanel'
-    = partial 'shared/usernav'
+    = partial :'shared/toppanel'
+    = partial :'shared/usernav'
     
-    -# = session.inspect
-    -# = request.cookies.keys.inspect
-    -# = request.session.inspect
-    -# = session.inspect
-
     = yield
 
     = javascript_include_merged :base
