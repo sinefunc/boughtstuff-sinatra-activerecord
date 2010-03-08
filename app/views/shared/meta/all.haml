@@ -1,8 +1,8 @@
 .col6-1.colR.clearFix.user-meta
   %h2
-    %a{ :href => '#' }
+    %a{ :href => root_url }
       = 'Welcome to Boughtstuff'
   %p
     %strong
-      = number_to_currency(Spending.total)
+      = number_to_currency(Item.total_spending)
     worth of stuff has been bought.

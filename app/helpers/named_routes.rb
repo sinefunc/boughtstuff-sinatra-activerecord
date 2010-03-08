@@ -9,7 +9,7 @@ class Main
     end
     
     def user_url( user )
-      account_url(user.username)
+      account_url(user.username) + '/items'
     end
 
     def new_item_path

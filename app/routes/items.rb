@@ -6,9 +6,13 @@ class Main
       @account = Anonymous.new
     end 
   end
+  
+  get "/" do
+    haml "%h1 No Homepage yet"
+  end
 
   get "/items" do
-    @items = @account.items.latest.paginate(:page => params[:page])
+    @items = @account.items.latest.paginate(page: params[:page])
 
     haml :'items/index'
   end
