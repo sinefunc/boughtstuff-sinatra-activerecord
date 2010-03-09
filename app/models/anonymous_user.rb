@@ -1,4 +1,4 @@
-class Anonymous
+class AnonymousUser
   def items
     Item.where
   end

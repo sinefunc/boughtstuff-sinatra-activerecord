@@ -3,7 +3,7 @@ class Main
     if account_subdomain and account_subdomain != 'www'
       @account = User.find_by_username( account_subdomain )
     else
-      @account = Anonymous.new
+      @account = AnonymousUser.new
     end 
   end
 
