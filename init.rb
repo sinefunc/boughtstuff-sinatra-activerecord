@@ -14,14 +14,7 @@ require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 require 'mysql'
 
-require root_path('config', 'sinefunc')
-require root_path('lib', 'format')
-require root_path('lib', 'item_url')
-require root_path('lib', 'uuid')
-
-I18n.backend.load_translations(root_path('config', 'locales', 'en.yml'))
-
-alias :app_config :settings
+Dir[ root_path('config', 'initializers', '*.rb') ].each { |f| require f }
 
 class Main < Monk::Glue
   enable :sessions
@@ -34,19 +27,7 @@ class Main < Monk::Glue
   helpers WillPaginate::ViewHelpers::Base
 end
 
-ActiveRecord::Base.establish_connection(
-  YAML.load_file(root_path('config', 'database.yml'))[RACK_ENV]
-)
-ActiveRecord::Base.logger = logger
-
-# Load all application files.
-class Object
-  Dir[root_path("app/models/*.rb")].each do |file|
-    autoload File.basename(file, '.rb').camelize, file
-  end
-end
-
-Dir[root_path("app/**/*.rb")].each do |file|
+Dir[root_path('lib/*.rb'), root_path("app/**/*.rb")].each do |file|
   require file
 end
 

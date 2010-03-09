@@ -1,7 +1,5 @@
-$LOAD_PATH.unshift(root_path('vendor', 'sinefunc', 'is_taggable', 'lib'))
 $LOAD_PATH.unshift(root_path('vendor', 'sinefunc', 'will_paginate', 'lib'))
 
-require root_path('vendor/sinefunc/is_taggable/init')
 require root_path('vendor/sinefunc/will_paginate/lib/will_paginate/finders/active_record')
 require root_path('vendor/sinefunc/will_paginate/lib/will_paginate/view_helpers/base')
 require root_path('vendor/sinefunc/will_paginate/lib/will_paginate/view_helpers/link_renderer')
@@ -25,4 +23,3 @@ WillPaginate::ViewHelpers::LinkRenderer.class_eval do
     end
   end
 end
-
