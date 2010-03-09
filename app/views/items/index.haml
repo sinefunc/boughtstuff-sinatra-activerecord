@@ -48,5 +48,9 @@
                     %li.rt-item
                       %a{ :href => retweets_path(:item_id => item) }
                         RT
+                    %li.delete-item
+                      %a{ :href => absolute_item_url(item) }
+                        DELETE
+                    
   .bottom-shelf
     = pagination @items

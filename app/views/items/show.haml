@@ -16,6 +16,9 @@
       %li.colL.rt-item
         %a{ :href => "#" }
           RT
+      %li.colL.delete-item
+        %a{ :href => '#'}
+          Delete
       - unless current_user == @item.user
         %li.colL.dm-item
           %a{ :href => "#" }

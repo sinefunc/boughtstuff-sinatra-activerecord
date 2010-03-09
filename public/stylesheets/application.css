@@ -68,14 +68,14 @@ fieldset.boughtstuff-form input.text-input {background: none; padding: 10px; fon
 #shelf .shelf-items .shelf-item .item-meta .item-title a {color: #CCC; text-decoration: none; font-size: 12px; font-weight: normal;}
 #shelf .shelf-items .shelf-item .item-meta .item-title a.contact-link {color: #30B439 !important;}
 #shelf .shelf-items .shelf-item .item-meta .item-title a.contact-link:hover {color: #3FE84A !important;}
-#shelf .shelf-items .shelf-item em.new-item-badge {padding-top: 40px; width: 37px; position: absolute; background: url(/images/new-item-stub.png) no-repeat; top: 3px; left:8px;}
+#shelf .shelf-items .shelf-item em.new-item-badge {padding-top: 40px; width: 37px; position: absolute; background: url(/images/new-item-stub.png) no-repeat; top: 5px; left:9px;}
 #shelf .shelf-items .shelf-item em.sparkly-focus {padding-top: 71px; width: 64px; background: url(/images/bling.png) no-repeat; position: absolute; top: -28px; right: -12px;} 
 #shelf .shelf-items .shelf-item:hover .item-meta .item-title a {color: #FFF;}
 #shelf .shelf-items .shelf-item .item-meta .item-price {margin: 0px; float: left;}
 #shelf .shelf-items .shelf-item .item-meta .item-price, #shelf .shelf-items .shelf-item .item-meta .item-price * {text-decoration: none; border: 0; color: #30B439; font-weight: bold;}
 #shelf .shelf-items .shelf-item .item-actions {position: absolute; right: -5px; background: url(/images/item-actions-icn.png) no-repeat; height: 30px; width: 30px; bottom: 3px; padding-left: 6px; cursor: pointer;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook {position: relative; z-index: 10;}
-#shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu {position: absolute; bottom: -30px; right: -55px; background: #E5E5E5;  padding: 5px 5px 0 5px; -moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px; display: none; width: 45px;}
+#shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu {position: absolute; bottom: -30px; right: -60px; background: #E5E5E5;  padding: 5px 5px 0 5px; -moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px; display: none; width: 50px;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li {border-bottom: 1px solid transparent; padding: 5px 3px 5px 5px; text-align: center; margin-bottom: 5px;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li a {font-size: 10px; text-transform: uppercase; text-decoration: none; color: #656565; display: block; font-family: helvetica, verdana, arial, sans-serif;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li.view-item a {background: url(/images/view-icn.png) 50% 4px no-repeat; padding-top: 20px; }
@@ -83,6 +83,7 @@ fieldset.boughtstuff-form input.text-input {background: none; padding: 10px; fon
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li.reply-item a {background: url(/images/reply-icn.png) 50% 4px no-repeat; padding-top: 20px;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li.dm-item a {background: url(/images/dm-icn.png) 50% 4px no-repeat; padding-top: 20px;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li.rt-item a{background: url(/images/rt-icn.png) 50% 4px no-repeat; padding-top: 20px;}
+#shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li.delete-item a {background: url(/images/delete-icn.gif) 50% 4px no-repeat; padding-top: 20px; }
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li:hover {background-color: #CCC;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px; border-bottom: 1px solid #FFF;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li:hover a {color: #333;}
 #shelf .shelf-items .shelf-item:hover .item-actions {background-position: 0 -30px;}
@@ -150,6 +151,7 @@ span.tool-tip a {color: #FFF;-moz-border-radius:3px;-webkit-border-radius:3px;bo
 .single-item-card .item-actions li.reply-item {background: url(/images/reply-icn.png) 0 50% no-repeat; padding-left: 20px;}
 .single-item-card .item-actions li.dm-item {background: url(/images/dm-icn.png) 0 50% no-repeat; padding-left: 20px;}
 .single-item-card .item-actions li.rt-item {background: url(/images/rt-icn.png) 0 50% no-repeat; padding-left: 20px;}
+.single-item-card .item-actions li.delete-item {background: url(/images/delete-icn.gif) 0 50% no-repeat; padding-left: 20px;}
 .single-item-card .single-item-title {margin: 0 ; background: #6E6E6E;border-top-left-radius:3px;-webkit-border-top-left-radius:3px;-moz-border-radius-topleft:3px; border-top-right-radius:3px;-webkit-border-top-right-radius:3px;-moz-border-radius-topright:3px; padding: 10px; }
 .single-item-card .single-item-title h2 {margin: 0;font-family:helvetica, verdana, arial, sans-serif; font-weight: bold; letter-spacing: -1px;color: #FFF;}
 .single-item-card .single-item-meta {background: #EEEFFF; padding: 10px;border-bottom: 1px solid #CCCEEE; line-height: 16px;border-top: 1px solid #FFF;}
