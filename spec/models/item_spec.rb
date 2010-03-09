@@ -73,7 +73,7 @@ describe Item, "with a photo_url" do
   
   context "when the photo exists" do
     before(:each) do
-      @picture = File.read(::Rails.root.join('spec/fixtures/files/picture.png'))
+      @picture = File.read(root_path('spec/fixtures/files/picture.png'))
 
       FakeWeb.register_uri(:get, "http://test.host/picture.png", :body => @picture)
     end

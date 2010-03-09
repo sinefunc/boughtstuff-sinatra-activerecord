@@ -7,8 +7,8 @@ defaults: &defaults
   :photos:
     :storage:   :file
     :root:      ':root/public'
-    :store_dir: 'system/uploads'
-    :cache_dir: 'system/uploads/tmp'
+    :store_dir: ':root/public/system/uploads'
+    :cache_dir: ':root/public/system/uploads/tmp'
 
   :twitter:
     :consumer_key: "2YTK8XIszlR12aVju0tA"
@@ -32,7 +32,7 @@ defaults: &defaults
     :storage: :s3
     :root:      ':root/public'
     :store_dir: 'uploads'
-    :cache_dir: 'system/uploads/tmp'
+    :cache_dir: ':root/public/system/uploads/tmp'
     :bucket:    'boughtstuff.com'
     :s3_access_key_id: "1K4Y2FT2FFD0WYZJYT02"
     :s3_secret_access_key: "qWCV1IOH/BkkqyrSMuL86/gzbnsC55QxAhy18uD/"
