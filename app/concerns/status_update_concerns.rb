@@ -27,7 +27,7 @@ module StatusUpdateConcerns
   end
 
   def initialize( attrs = {} )
-    attrs.each { |k, v| send("#{k}=", v) }
+    attrs.each { |field, value| write(field, value) }
 
     if @item and @body.blank?
       template = render(:url => ItemUrl.make(@item), :username => @item.user.login)
@@ -80,5 +80,9 @@ module StatusUpdateConcerns
       self.class.template.dup.tap do |ret|
         attrs.each { |k, v| ret.gsub!(":#{k}", v) }
       end
+    end
+
+    def write( field, value )
+      send("#{field}=", value) 
     end
 end

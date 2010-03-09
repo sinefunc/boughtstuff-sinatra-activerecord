@@ -1,36 +1,3 @@
-# -------------------------
-# Table users
-#
-# id: integer
-# twitter_id: string
-# login: string
-# access_token: string
-# access_secret: string
-# remember_token: string
-# remember_token_expires_at: datetime
-# name: string
-# location: string
-# description: string
-# profile_image_url: string
-# url: string
-# protected: boolean
-# profile_background_color: string
-# profile_sidebar_fill_color: string
-# profile_link_color: string
-# profile_sidebar_border_color: string
-# profile_text_color: string
-# profile_background_image_url: string
-# profile_background_tile: boolean
-# friends_count: integer
-# statuses_count: integer
-# followers_count: integer
-# favourites_count: integer
-# utc_offset: integer
-# time_zone: string
-# created_at: datetime
-# updated_at: datetime
-# boughtstuff_username: string
-
 class User < ActiveRecord::Base
   validates :login, :uniqueness => true, :presence => true
   validates :twitter_id, :uniqueness => true, :presence => true

@@ -26,6 +26,8 @@ class Item < ActiveRecord::Base
 
   after_create :broadcast_to_twitter
   
+  self.per_page = 15
+
   def self.total_spending
     sum(:price) / 100  
   end

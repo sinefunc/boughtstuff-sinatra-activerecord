@@ -12,7 +12,7 @@
       = navigation do
         = nav_item t('persons_shelf', person: @account), items_path
         = nav_item t('persons_friends', person: @account), friends_items_path
-        = nav_item "Everyone", everyone_items_url
+        = nav_item "Everyone", everyone_items_url, false
 
       = partial :'shared/meta/other', :user => @account
 

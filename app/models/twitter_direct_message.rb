@@ -26,7 +26,7 @@ class TwitterDirectMessage
     )
     self.id = self.last_response["id"].to_s
     return true
-  rescue # TwitterAuth::Dispatcher::Error
+  rescue TwitterProxy::Unauthorized, TwitterProxy::Error
     return false
   end
 
@@ -34,9 +34,7 @@ class TwitterDirectMessage
     id.nil?
   end
 
-
   private
-
     def last_response=(response)
       @last_response = response
     end
