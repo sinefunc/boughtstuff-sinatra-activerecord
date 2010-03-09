@@ -1,5 +1,9 @@
 class Main
   helpers do
+    def self?( user )
+      current_user && current_user == user
+    end
+
     def user_avatar( user )
       image_tag user.avatar_url, :alt => user.name
     end

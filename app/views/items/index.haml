@@ -8,13 +8,13 @@
           %a.item-link{ :href => absolute_item_url(item), :title => item.name }
             = image_tag item.photo.url(:thumb), :alt => item.name
           .item-details
-            - unless current_user == item.user
+            - if not self?(item.user)
               %a.contact-avatar{ :href => user_url(item.user) }
                 = user_avatar(item.user)
 
             .col2-4.clearFix.item-meta
               %h3.item-title.clearFix
-                - unless current_user == item.user
+                - if not self?(item.user)
                   = user_link_to item.user, :class => 'contact-link'
                   \~
                 %a{ :href => item_path(item) }
@@ -37,20 +37,24 @@
                         %li.like-item[item, :like]{hide_if(current_user.likes?(item))}
                           %a.like-link{ :href => likes_path(:item_id => item.id) }
                             Like
-
-                    %li.reply-item
-                      %a{ :href => new_reply_path(:item_id => item) }
-                        Reply
+                    
+                    - unless self?(item.user)
+                      %li.reply-item
+                        %a{ :href => new_reply_path(:item_id => item) }
+                          Reply
                     %li.dm-item.hide
                       %a{ :href => "#" }
                         DM
 
-                    %li.rt-item
-                      %a{ :href => retweets_path(:item_id => item) }
-                        RT
-                    %li.delete-item
-                      %a{ :href => absolute_item_url(item) }
-                        DELETE
+                    - unless self?(item.user)
+                      %li.rt-item
+                        %a{ :href => retweets_path(:item_id => item) }
+                          RT
+
+                    - if self?(item.user)
+                      %li.delete-item
+                        %a{ :href => absolute_item_url(item) }
+                          DELETE
                     
   .bottom-shelf
     = pagination @items

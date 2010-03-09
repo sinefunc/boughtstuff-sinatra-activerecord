@@ -44,7 +44,7 @@ class Main
 
   post "/items" do
     login_required
-
+    
     @item = current_user.items.build(params[:item])
     
     if @item.save
