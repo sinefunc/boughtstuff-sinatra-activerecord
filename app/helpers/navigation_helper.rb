@@ -6,7 +6,9 @@ class Main
 
     def nav_item( text, url_options, args = nil )
       options = 
-        if args
+        if args == false
+          {}
+        elsif args 
           active_if(*Array(args))
         else
           active_if( url_options )
@@ -21,7 +23,7 @@ class Main
     end
 
     def show_toggling
-      yield if params[:action] =~ /index|liked/
+      yield if inside?('/items', '/liked')
     end
 
     private

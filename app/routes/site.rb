@@ -1,6 +1,10 @@
 class Main
   before do
-    logger.info("#{request.request_method} #{request.fullpath} #{params.inspect}")
+    if account_subdomain and account_subdomain != 'www'
+      @account = User.find_by_username( account_subdomain )
+    else
+      @account = Anonymous.new
+    end 
   end
 
   get '/authenticated' do

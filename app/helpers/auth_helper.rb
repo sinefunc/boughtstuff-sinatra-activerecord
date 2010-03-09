@@ -1,5 +1,11 @@
 class Main
   helpers do
+    def login_required( redirect_to = '/' )
+      unless logged_in?
+        redirect redirect_to
+      end
+    end
+
     def logged_in?
       current_user.is_a?(User)
     end

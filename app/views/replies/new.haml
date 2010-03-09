@@ -1,7 +1,7 @@
 .initial
   %h1 Replying to #{h(@reply.item.user)} about #{h(@item.name)}
 
-  - form_for @reply, :html => { :rel => @reply.class.model_name.underscore, :class => 'remote-form' } do |f|
+  = form_for @reply, :html => { :action => '/replies', :rel => @reply.class.model_name.underscore, :class => 'remote-form' } do |f|
 
     %label(for='reply_body')
       %span Write something to say

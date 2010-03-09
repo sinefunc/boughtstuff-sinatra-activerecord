@@ -1,16 +1,14 @@
 class Main
-  before do
-    if account_subdomain and account_subdomain != 'www'
-      @account = User.find_by_username( account_subdomain )
+  get "/" do
+    if User === @account 
+      @items = @account.items.latest.paginate(page: params[:page])
+
+      haml :'items/index'
     else
-      @account = Anonymous.new
-    end 
+      haml "%h1 No Homepage yet"
+    end
   end
   
-  get "/" do
-    haml "%h1 No Homepage yet"
-  end
-
   get "/items" do
     @items = @account.items.latest.paginate(page: params[:page])
 
@@ -23,7 +21,15 @@ class Main
     haml :'items/index'
   end
 
+  get "/liked" do
+    @items = @account.likes_items.latest.paginate(page: params[:page])
+
+    haml :'items/index'
+  end
+
   get "/items/new" do
+    login_required
+
     @item = Item.new(:name => params[:name])
 
     haml :'items/new'
@@ -31,28 +37,21 @@ class Main
  
   get "/items/:id" do |id|
     @item = @account.items.find(id)
-
+    @item.viewed!
+    
     haml :'items/show'
   end
 
   post "/items" do
+    login_required
+
     @item = current_user.items.build(params[:item])
     
     if @item.save
-      logger.error({ location: user_url(@item.user) }.to_json)
-
       { location: user_url(@item.user) }.to_json
     else
       @item.errors.to_json
     end
-  end
-
-  put "/items/:id" do |id|
-
-  end
-
-  delete "/items/:id" do |id|
-
   end
 
   get '/friends-items' do

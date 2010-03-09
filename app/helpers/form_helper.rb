@@ -4,7 +4,18 @@ class Main
       def initialize( model, context )
         @model, @context, @prefix = model, context, model.class.model_name.underscore
       end
-      
+
+      def hidden_field( field, options = {} )
+        options.merge!( 
+          type:   'hidden',
+          name:   name(field),
+          value:  value(field),
+          id:     id(field)
+        )
+
+        %(<input #{tag_options(options)} />)
+      end
+     
       def text_field( field, options = {} )
         options.merge!( 
           type:   'text',

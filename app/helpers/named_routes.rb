@@ -32,6 +32,10 @@ class Main
       append_query_string("/replies/new", options)
     end
 
+    def retweets_path(options = {})
+      append_query_string("/retweets", options) 
+    end
+
     def most_viewed_url
       '/most-viewed'
     end
@@ -73,7 +77,8 @@ class Main
         path.dup.tap do |p|
           if options.any?
             p << '?'
-            p << options.map { |k, v| %(#{k}=#{v}) }.join('&')
+            p << options.map { |k, v| 
+              %(#{k}=#{v.respond_to?(:to_param) ? v.to_param : v}) }.join('&')
           end
         end
       end

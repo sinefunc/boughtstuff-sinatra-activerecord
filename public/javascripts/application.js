@@ -9,6 +9,20 @@
       return false;
     });
 
+    $('.rt-item a').click(function() {
+      var $this = $(this);
+
+      $.ajax({
+        'url':      $this.attr('href'),
+        'type':     'POST',
+        'success':  function(data) {
+          $.ubox($this.attr('href'));
+        }
+      });
+
+      return false;
+    });
+
     $('a[data-method="delete"]').destroyOnClick();
     $('.like-link, .unlike-link').likeUnlikeLink();
 

@@ -11,7 +11,7 @@ module Boughtstuff
   
   ASSET_HOST =
     case RACK_ENV
-    when 'development', 'test', 'cucumber' then 'http://boughtstuff.local:4567'
+    when 'development', 'test', 'cucumber' then 'http://boughtstuff.local:3000'
     when 'production' then "http://d20r1yy71waydm.cloudfront.net"
     end
 
@@ -38,18 +38,4 @@ module Boughtstuff
     secret:       "lcO2ulMC2dhAS1dvEQz7qT4fCsMFKDrqpF9BSyw2A8",
     return_to:    "/authenticated"
   }
-
-  # PAPERCLIP_CONFIG = 
-  #   case RACK_ENV
-  #   when 'development', 'test', 'cucumber' then {}
-  #     # { url: "/system/:attachment/:id/:style.:extension" }
-  #     # { path: ":rails_root/public/system/:attachment/:id/:style.:extension",
-  #     #   url:  "/system/:attachment/:id/:style.:extension" }
-  #   when 'production' 
-  #     { :storage => :s3, 
-  #       :s3_credentials => Rails.root.join('config', 's3.yml').to_s,
-  #       :path => ":attachment/:id/:style.:extension", 
-  #       :bucket => "boughtstuff.com"
-  #     }
-  #   end
 end
