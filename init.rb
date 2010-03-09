@@ -1,13 +1,7 @@
 ROOT_DIR = File.expand_path(File.dirname(__FILE__)) unless defined? ROOT_DIR
+$LOAD_PATH.unshift(ROOT_DIR + '/vendor/monk-glue/lib')
 
 require "rubygems"
-
-begin
-  require "vendor/dependencies/lib/dependencies"
-rescue LoadError
-  require "dependencies"
-end
-
 require 'monk/glue'
 require 'json'
 require 'haml'
@@ -22,7 +16,6 @@ require 'carrierwave/orm/activerecord'
 require 'mysql'
 
 require root_path('config', 'rails-compat')
-require root_path('config', 'boughtstuff')
 require root_path('config', 'sinefunc')
 require root_path('lib', 'format')
 require root_path('lib', 'item_url')

@@ -30,9 +30,9 @@ defaults: &defaults
 
   :photos:
     :storage: :s3
-    :root:      ':root'
+    :root:      ':root/public'
     :store_dir: 'uploads'
-    :cache_dir: ':root/public/system/uploads/tmp'
+    :cache_dir: 'system/uploads/tmp'
     :bucket:    'boughtstuff.com'
     :s3_access_key_id: "1K4Y2FT2FFD0WYZJYT02"
     :s3_secret_access_key: "qWCV1IOH/BkkqyrSMuL86/gzbnsC55QxAhy18uD/"
