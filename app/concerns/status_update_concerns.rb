@@ -77,7 +77,7 @@ module StatusUpdateConcerns
 
   private
     def render( attrs = {} )
-      returning self.class.template.dup do |ret|
+      self.class.template.dup.tap do |ret|
         attrs.each { |k, v| ret.gsub!(":#{k}", v) }
       end
     end

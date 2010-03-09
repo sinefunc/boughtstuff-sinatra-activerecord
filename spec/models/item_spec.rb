@@ -4,7 +4,6 @@ describe Item do
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:price_in_dollars) }
   it { should validate_numericality_of(:price_in_dollars, :allow_blank => true) }
-  it { should validate_attachment_presence(:photo) }
   it { should validate_length_of(:name, :maximum => 255) }
   it { should belong_to(:user) }
 end
@@ -63,24 +62,6 @@ describe "given today is April fools" do
   end
 end
 
-describe Item, "with a tempitem_id" do
-  subject { Factory(:item, :tempitem_id => Factory(:tempitem).id, :photo => nil) }
-
-  it { should_not validate_attachment_presence(:photo) }
-
-  context "when saving it" do
-    before(:each) { @save = lambda { subject.save! } }
-
-    it { @save.should_not raise_error(ActiveRecord::RecordInvalid) }
-
-    it "should copy the photo from the tempitem" do
-      @save.call
-      subject.reload
-      subject.photo_file_name.should == 'avatar.jpg'
-    end
-  end
-end
-
 describe Item, "with a photo_url" do
   before(:each) do
     FakeWeb.register_uri(:get, "http://test.host/picture.png", :body => "data")
@@ -89,8 +70,6 @@ describe Item, "with a photo_url" do
   subject { 
     Factory.build(:item, :photo => nil, :photo_url => "http://test.host/picture.png") 
   }
-  
-  it { should_not validate_attachment_presence(:photo) }
   
   context "when the photo exists" do
     before(:each) do

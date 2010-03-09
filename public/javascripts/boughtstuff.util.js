@@ -79,7 +79,7 @@
   $.fn.inlineError = function( msg ) {
     var $html = 
       $("<span class='tool-tip'><a href='#' tabindex='9999'></a></span>");
-
+    
     $("label[for='" + $(this).attr('id') + "']").append( 
       $html.find('a').html( msg ).end()
     );

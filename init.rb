@@ -8,23 +8,34 @@ rescue LoadError
   require "dependencies"
 end
 
-%W(monk/glue haml twitter/login chronic open-uri i18n
-   active_support active_record mysql).each do |gem|
-  print " -> requiring #{gem}... "
-  require gem
-  puts  "Done!"
+require 'monk/glue'
+require 'json'
+require 'haml'
+require 'twitter/login'
+require 'chronic'
+require 'open-uri'
+require 'i18n'
+require 'active_support'
+require 'active_record'
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+require 'mysql'
+
+CarrierWave.configure do |c|
+  c.root = root_path('public')
+  c.store_dir = root_path('public', 'system', 'uploads')
+  c.cache_dir = root_path('public', 'system', 'uploads', 'tmp')
 end
 
-puts " -> requiring config files..." 
 require root_path('config', 'rails-compat')
 require root_path('config', 'boughtstuff')
 require root_path('config', 'sinefunc')
 require root_path('lib', 'format')
 require root_path('lib', 'item_url')
+require root_path('lib', 'uuid')
 
 I18n.backend.load_translations(root_path('config', 'locales', 'en.yml'))
 
-puts " -> initializing main."
 class Main < Monk::Glue
   enable :sessions
   set    :app_file, __FILE__
@@ -32,6 +43,7 @@ class Main < Monk::Glue
   use     Rack::Session::Cookie, Boughtstuff::SESSION_OPTIONS
   use     Twitter::Login, Boughtstuff::TWITTER_LOGIN_OPTIONS
   helpers Twitter::Login::Helpers
+  helpers WillPaginate::ViewHelpers::Base
 end
 
 ActiveRecord::Base.establish_connection(

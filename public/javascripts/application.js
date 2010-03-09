@@ -15,12 +15,12 @@
 
     $('#item_photo').autoUpload({
       'spinner' : $.assetHost('/images/spinner.gif'),
-      'field'   : 'item[tempitem_id]'
+      'field'   : 'item[temp_photo_file_name]'
     });
 
     $('#item_photo_url').autoScrape({
       'spinner' : $.assetHost('/images/spinner.gif'),
-      'field'   : 'item[tempitem_id]'
+      'field'   : 'item[temp_photo_file_name]'
     });
 
     $('.delete-preview').live('click', function() {

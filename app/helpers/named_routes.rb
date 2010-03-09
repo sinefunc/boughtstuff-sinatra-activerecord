@@ -29,12 +29,7 @@ class Main
     end
 
     def new_reply_path(options = {})
-      ret = "/replies/new"
-      if options.any?
-        ret << '?'
-        ret << options.map { |k, v| %(#{k}=#{v}) }.join('&')
-      end
-      ret
+      append_query_string("/replies/new", options)
     end
 
     def most_viewed_url
@@ -52,13 +47,35 @@ class Main
     def items_path
       '/items'
     end
-    
+  
+    def tagged_items_path( tag )
+      '/items/tagged/' + tag
+    end
+
     def liked_path
       '/liked'
+    end
+
+    def like_path( item )
+      '/likes/' + item.to_s
+    end
+
+    def likes_path( options = {} )
+      append_query_string( "/likes", options ) 
     end
 
     def friends_items_path
       '/friends-items' 
     end
+
+    private
+      def append_query_string( path, options )
+        path.dup.tap do |p|
+          if options.any?
+            p << '?'
+            p << options.map { |k, v| %(#{k}=#{v}) }.join('&')
+          end
+        end
+      end
   end
 end

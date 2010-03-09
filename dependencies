@@ -10,6 +10,7 @@ hoe 2.5.0
 chronic 0.2.3
 i18n 0.3.5
 twitter 0.8.4
+carrierwave 0.4.5
 
 rack-test 0.3.0 (test) git://github.com/brynary/rack-test.git
 timecop 0.3.4 (test)
@@ -17,3 +18,4 @@ fakeweb 1.2.8 (test)
 webrat 0.5.1 (test) git://github.com/brynary/webrat.git
 database_cleaner 0.5.0 (test)
 factory_girl 1.2.3 (test)
+

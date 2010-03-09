@@ -20,10 +20,5 @@ Factory.define :item do |f|
   f.association :user
   f.name "Macbook Pro 15"
   f.price_in_dollars 1500
-  f.photo fixture_file_upload('/files/avatar.jpg', 'image/jpg')
-end
-
-Factory.define :tempitem do |f|
-  f.association :user
-  f.photo fixture_file_upload('/files/avatar.jpg', 'image/jpg')
+  f.photo File.open(root_path('spec/fixtures/files/avatar.jpg'))
 end

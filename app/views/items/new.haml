@@ -1,5 +1,5 @@
 .clear.col16-2.clearFix.centerize.create-item-form
-  - form_for(@item, :html => { :multipart => true }) do |f|
+  = form_for @item, :html => { :class => 'remote-form', :action => items_path, :multipart => true, :rel => 'item' } do |f|
     %fieldset.col11-1.colL.item-form
       %legend
         %strong.form-head

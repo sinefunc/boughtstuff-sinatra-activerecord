@@ -13,9 +13,7 @@ class Item < ActiveRecord::Base
   validates :price_in_dollars, 
     :presence => true,
     :numericality => { :allow_blank => true, :greater_than_or_equal_to => 0 }
-
-  validates_attachment_presence :photo, :unless => :tempitem_id_or_photo_url?
-
+  
   scope :latest,      order('id DESC')
   scope :most_viewed, order('id DESC')
   scope :most_liked,  where('likes_count != 0').order('likes_count DESC')
@@ -24,11 +22,11 @@ class Item < ActiveRecord::Base
   belongs_to :user
   has_many   :likes, :dependent => :destroy
   
-  attr_accessor :tempitem_id
   attr_readonly :views_count, :likes_count
 
-  before_save  :copy_temp_photo
   after_create :broadcast_to_twitter
+  
+  self.per_page = 15
 
   def self.total_spending
     sum(:price) / 100  
@@ -78,10 +76,6 @@ class Item < ActiveRecord::Base
   end
 
   private
-    def tempitem_id_or_photo_url?
-      tempitem_id.present? or photo_url.present?
-    end
-
     def valid_amount?( amount )
       begin
         Kernel.Float(amount)
@@ -89,13 +83,6 @@ class Item < ActiveRecord::Base
         return false
       else
         return true
-      end
-    end
-
-    def copy_temp_photo
-      if tempitem_id.present?
-        tempitem = Tempitem.find(tempitem_id)
-        self.photo = tempitem.photo.to_file
       end
     end
 end

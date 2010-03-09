@@ -1,4 +1,8 @@
 class Main
+  before do
+    logger.info("#{request.request_method} #{request.fullpath} #{params.inspect}")
+  end
+
   get '/authenticated' do
     if twitter_user
       self.current_user = 

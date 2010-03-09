@@ -7,10 +7,11 @@ class TwitterProxy
   end
   
   [ :get, :put, :delete, :post, :head ].each do |meth|
-    if RACK_ENV == 'development' and not [ :get, :post ].include?(meth)
+    if RACK_ENV == 'development' and not [ :get ].include?(meth)
       define_method meth do |path, *arguments|
         logger.info "#{meth}, #{path}, #{arguments.inspect}"
         puts "#{meth}, #{path}, #{arguments.inspect}"
+        { "id" => 654321 }
       end
     else
       define_method meth do |path, *arguments|

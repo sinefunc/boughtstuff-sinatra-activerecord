@@ -39,14 +39,17 @@ module Boughtstuff
     return_to:    "/authenticated"
   }
 
-  PAPERCLIP_CONFIG = 
-    case RACK_ENV
-    when 'development', 'test', 'cucumber' then {}
-    when 'production' 
-      { :storage => :s3, 
-        :s3_credentials => Rails.root.join('config', 's3.yml').to_s,
-        :path => ":attachment/:id/:style.:extension", 
-        :bucket => "boughtstuff.com"
-      }
-    end
+  # PAPERCLIP_CONFIG = 
+  #   case RACK_ENV
+  #   when 'development', 'test', 'cucumber' then {}
+  #     # { url: "/system/:attachment/:id/:style.:extension" }
+  #     # { path: ":rails_root/public/system/:attachment/:id/:style.:extension",
+  #     #   url:  "/system/:attachment/:id/:style.:extension" }
+  #   when 'production' 
+  #     { :storage => :s3, 
+  #       :s3_credentials => Rails.root.join('config', 's3.yml').to_s,
+  #       :path => ":attachment/:id/:style.:extension", 
+  #       :bucket => "boughtstuff.com"
+  #     }
+  #   end
 end

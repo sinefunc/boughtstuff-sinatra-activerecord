@@ -39,7 +39,7 @@ class Main
 
     private
       def tag_options( options )
-        options.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')
+        options.map { |k, v| "#{k}='#{v}'" }.join(' ')
       end
 
       def tag_in_block( tag, options = {}, &block )

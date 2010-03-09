@@ -3,7 +3,7 @@
     $(this).livequery(function() {
       var $this = $(this),
           $button = $this.find('.button'),
-          $spinner = $('<img alt="Please wait..." />').attr(
+          $spinner = $('<img alt="Please wait..." class="centerize" />').attr(
             'src', $.assetHost('/images/spinner.gif')
           ),
           modelName = $this.attr('rel');
@@ -17,14 +17,18 @@
 
         'success'       : function(data) {
           if (data['location']) {
-            $('.initial, .success', '#ubox-container').toggleClass('hide');
+            if ($('#ubox-container').css('display') == 'none') {
+              window.location.href = data['location'];
+            } else {
+              $('.initial, .success', '#ubox-container').toggleClass('hide');
+            }
           } else {
             $button.removeClass('hide');
             $spinner.remove();
 
             $('.tool-tip').remove();
             $.each(data, function( field, errors ) {
-              $('#' + modelName + '_' + field).inlineError( errors );
+              $('#' + modelName + '_' + field).inlineError( errors[0] );
             });
           }
         }

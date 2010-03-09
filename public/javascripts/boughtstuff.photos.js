@@ -12,8 +12,10 @@
             '<a class="delete-preview" href="#">Delete</a>' +
             '<input type="hidden" name="' + options['field'] + '" value="" /></span>'
           ),
-          $spinner         = $('<img src="" alt="Please wait..." />').
-                                    attr('src', options['spinner']);
+          $spinner         = $(
+            '<img src="" alt="Please wait..." />'
+          ).attr('src', options['spinner']);
+
       this.$form = $form;
 
       this.canBeSubmitted = function() {
@@ -38,12 +40,11 @@
           $zoomLink.attr('href', data['original']);
 
           $base.after(
-            $replacement.find('.filename').text(data['filename']).end().
-              find('input[type=hidden]').val(data['id']).end()
+            $replacement.find('.filename').text(data['title']).end().
+              find('input[type=hidden]').val(data['filename']).end()
           );
-          $base.addClass('hide');
+          $base.addClass('hide').attr('disabled', true);
         } else {
-          console.log(data);
           alert("There were problems with uploading the file\n\n");
         }
         $spinner.remove();
@@ -56,7 +57,7 @@
           'iframe': true,
           'data'  : { 'format': 'iframe' },
           'dataType': 'json',
-          'url': '/tempitems',
+          'url': '/uploader',
           'beforeSubmit': this.beforeSubmit,
           'success': this.success
         });
