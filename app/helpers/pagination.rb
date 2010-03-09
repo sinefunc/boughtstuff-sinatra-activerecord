@@ -1,6 +1,6 @@
 class Main
   helpers do
-    class Boughtstuff::LinkRenderer < WillPaginate::ViewHelpers::LinkRenderer
+    class Main::LinkRenderer < WillPaginate::ViewHelpers::LinkRenderer
       def html_container( html )
         tag(:ul, html, container_attributes.merge(:class => 'notList pagination'))
       end
@@ -46,7 +46,7 @@ class Main
     
     def pagination( collection, options = {} )
       options.reverse_merge!(
-        :renderer => Boughtstuff::LinkRenderer,
+        :renderer => Main::LinkRenderer,
         :class    => 'notList pagination'
       )
 

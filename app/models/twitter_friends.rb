@@ -1,9 +1,9 @@
 module TwitterFriends
-  URI = "http://api.twitter.com/1/friends/ids.xml"
+  URL = "http://api.twitter.com/1/friends/ids.xml"
   
   # TODO : cache this
   def friends
-    twitter_ids = Hash.from_xml(twitter.get(URI))['ids']['id']
+    twitter_ids = Hash.from_xml(twitter.get(URL))['ids']['id']
     User.where(:twitter_id => twitter_ids)
   end
   

@@ -2,11 +2,11 @@
 %html{ "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
     %meta{ :content => "text/html;charset=UTF-8", "http-equiv" => "Content-Type" }
-    %title= Boughtstuff::SITE_TITLE
-
+    %title= t('site_title')
+    
     = stylesheet_link_merged :base
 
-    %meta{ :name => "asset-host", :content => Boughtstuff::ASSET_HOST }
+    %meta{ :name => "asset-host", :content => app_config(:asset_host) }
 
   %body
     = partial :'shared/toppanel'

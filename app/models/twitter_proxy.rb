@@ -38,7 +38,7 @@ class TwitterProxy
 
     def twitter_oauth
       Twitter::OAuth.new(
-        *Boughtstuff::TWITTER_LOGIN_OPTIONS.values_at(:consumer_key, :secret)
+        *settings(:twitter).values_at(:consumer_key, :secret)
       )
     end
   

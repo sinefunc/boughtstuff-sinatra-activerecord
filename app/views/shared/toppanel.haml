@@ -1,8 +1,9 @@
 .top-panel
   .col16-2.centerize.boughtstuff-main
     %h2.branding
-      %a.ir{ :href => root_url(:host => account_host('www')) }= Boughtstuff::SITE_NAME
-      %em.ir= Boughtstuff::SITE_SUBTITLE
+      %a.ir{ :href => root_url(:host => account_host('www')) }
+        = t('site_name')
+      %em.ir= t('site_subtitle')
 
     %form(action=new_item_path method='get')
       %fieldset.centerize.clearFix.col15-2.boughtstuff-form

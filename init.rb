@@ -21,12 +21,6 @@ require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 require 'mysql'
 
-CarrierWave.configure do |c|
-  c.root = root_path('public')
-  c.store_dir = root_path('public', 'system', 'uploads')
-  c.cache_dir = root_path('public', 'system', 'uploads', 'tmp')
-end
-
 require root_path('config', 'rails-compat')
 require root_path('config', 'boughtstuff')
 require root_path('config', 'sinefunc')
@@ -36,13 +30,16 @@ require root_path('lib', 'uuid')
 
 I18n.backend.load_translations(root_path('config', 'locales', 'en.yml'))
 
+alias :app_config :settings
+
 class Main < Monk::Glue
   enable :sessions
   set    :app_file, __FILE__
 
-  use     Rack::Session::Cookie, Boughtstuff::SESSION_OPTIONS
-  use     Twitter::Login, Boughtstuff::TWITTER_LOGIN_OPTIONS
+  use     Rack::Session::Cookie, settings(:session)
+  use     Twitter::Login, settings(:twitter)
   helpers Twitter::Login::Helpers
+
   helpers WillPaginate::ViewHelpers::Base
 end
 

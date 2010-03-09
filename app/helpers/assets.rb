@@ -3,11 +3,11 @@ class Main
     def image_tag( path, options = {} )
       src = 
         if path.index('/') == 0
-          "#{Boughtstuff::ASSET_HOST}#{path}"
+          "#{app_config(:asset_host)}#{path}"
         elsif path.index('http') == 0
           path
         else
-          "#{Boughtstuff::ASSET_HOST}/images/#{path}"
+          "#{app_config(:asset_host)}/images/#{path}"
         end
 
       %(<img src="#{src}" #{tag_options(options)} />)
@@ -15,14 +15,14 @@ class Main
 
     def stylesheet_link_merged( group )
       asset_packages_config['stylesheets'].first[group.to_s].map do |file|
-        %(<link href="#{Boughtstuff::ASSET_HOST}/stylesheets/#{file}.css" 
+        %(<link href="#{app_config(:asset_host)}/stylesheets/#{file}.css" 
                 type="text/css" rel="stylesheet" />)
       end.join("\n")
     end
 
     def javascript_include_merged( group )
       asset_packages_config['javascripts'].first[group.to_s].map do |file|
-        %(<script src="#{Boughtstuff::ASSET_HOST}/javascripts/#{file}.js" 
+        %(<script src="#{app_config(:asset_host)}/javascripts/#{file}.js" 
                   type="text/javascript"></script>)
       end.join("\n")
     end

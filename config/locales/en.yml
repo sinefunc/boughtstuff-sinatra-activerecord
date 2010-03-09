@@ -12,3 +12,9 @@ en:
   persons_shelf: "{{person}}'s shelf"
   persons_friends: "{{person}}'s friends"
   back_to_persons_shelf: "Back to {{person}}'s shelf"
+  
+  site_title: "Boughtstuff ~ social spending at its finest"
+  site_name:  "Boughtstuff"
+  site_subtitle: "social spending at its finest"
+
+

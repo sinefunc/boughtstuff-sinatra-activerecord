@@ -3,6 +3,12 @@ class Main
     def cached_file_id( uploader )
       uploader.file.path.gsub(uploader.cache_dir + '/', '')
     end
+
+    def generate_unique_filename( filename )
+      extension = filename.index('.') ? filename.split('.').last : ''
+
+      [ UUID.sha1, extension.downcase ].join('.')
+    end
   end
 
   post '/uploader' do
@@ -12,6 +18,9 @@ class Main
       if params[:item][:photo_url].present?
         uploader.cache!( StreamedFile.new(params[:item][:photo_url]) )
       else
+        params[:item][:photo][:filename] = 
+          generate_unique_filename( params[:item][:photo][:filename] )
+
         uploader.cache!(params[:item][:photo])
       end
     rescue CarrierWave::IntegrityError, CarrierWave::ProcessingError

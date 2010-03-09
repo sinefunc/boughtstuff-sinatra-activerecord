@@ -1,8 +1,10 @@
 class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::ImageScience
-
-  storage :file
   
+  settings(:photos).each do |key, value|
+    send key, String === value ? value.gsub(':root', root_path) : value
+  end
+
   version :large do
     process :resize_to_limit => [640, 480]
   end
