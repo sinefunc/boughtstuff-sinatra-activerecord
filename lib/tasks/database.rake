@@ -17,7 +17,7 @@ namespace :db do
     desc "Create a db/schema.rb file that can be portably used against any DB supported by AR"
     task :dump => :environment do
       require 'active_record/schema_dumper'
-      File.open(ENV['SCHEMA'] || "#{Rails.root}/db/schema.rb", "w") do |file|
+      File.open(ENV['SCHEMA'] || "#{ROOT_DIR}/db/schema.rb", "w") do |file|
         ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, file)
       end
       Rake::Task["db:schema:dump"].reenable
@@ -25,7 +25,7 @@ namespace :db do
 
     desc "Load a schema.rb file into the database"
     task :load => :environment do
-      file = ENV['SCHEMA'] || "#{Rails.root}/db/schema.rb"
+      file = ENV['SCHEMA'] || "#{ROOT_DIR}/db/schema.rb"
       if File.exists?(file)
         load(file)
       else

@@ -83,7 +83,7 @@ fieldset.boughtstuff-form input.text-input {background: none; padding: 10px; fon
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li.reply-item a {background: url(/images/reply-icn.png) 50% 4px no-repeat; padding-top: 20px;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li.dm-item a {background: url(/images/dm-icn.png) 50% 4px no-repeat; padding-top: 20px;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li.rt-item a{background: url(/images/rt-icn.png) 50% 4px no-repeat; padding-top: 20px;}
-#shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li.delete-item a {background: url(/images/delete-icn.gif) 50% 4px no-repeat; padding-top: 20px; }
+#shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li.delete-item a {background: url(/images/delete-icn.gif) 50% 4px no-repeat; padding-top: 23px; }
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li:hover {background-color: #CCC;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px; border-bottom: 1px solid #FFF;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li:hover a {color: #333;}
 #shelf .shelf-items .shelf-item:hover .item-actions {background-position: 0 -30px;}
