@@ -23,7 +23,6 @@ class Main < Monk::Glue
   use     Rack::Session::Cookie, settings(:session)
   use     Twitter::Login, settings(:twitter)
   helpers Twitter::Login::Helpers
-
   helpers WillPaginate::ViewHelpers::Base
 end
 

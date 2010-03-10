@@ -5,6 +5,7 @@ require 'rspec'
 require 'timecop'
 require 'rspec-rails-matchers'
 require 'fakeweb'
+require 'rack/test'
 
 Dir[ 'spec/support/*.rb' ].each { |f| require f }
 
