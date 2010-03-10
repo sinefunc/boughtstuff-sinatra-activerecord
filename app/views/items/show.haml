@@ -10,15 +10,17 @@
         %li.colL.like-item[@item, :like]{hide_if(current_user.likes?(@item))}
           %a.like-link{ :href => likes_path(:item_id => @item.id) }
             Like
-      %li.colL.reply-item
-        %a{ :href => "#" }
-          Reply
-      %li.colL.rt-item
-        %a{ :href => "#" }
-          RT
-      %li.colL.delete-item
-        %a{ :href => '#'}
-          Delete
+      - unless self?(@item.user)
+        %li.colL.reply-item
+          %a{ :href => new_reply_path(:item_id => @item) }
+            Reply
+        %li.colL.rt-item
+          %a{ :href => retweets_path(:item_id => @item) }
+            RT
+      - if self?(@item.user)
+        %li.colL.delete-item
+          %a{ :href => item_path(@item) }
+            Delete
       %li.colL.dm-item.hide
         %a{ :href => "#" }
           DM

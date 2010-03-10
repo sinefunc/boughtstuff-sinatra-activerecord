@@ -38,10 +38,10 @@
                           %a.like-link{ :href => likes_path(:item_id => item.id) }
                             Like
                     
-                    / - unless self?(item.user)
-                    %li.reply-item
-                      %a{ :href => new_reply_path(:item_id => item) }
-                        Reply
+                    - unless self?(item.user)
+                      %li.reply-item
+                        %a{ :href => new_reply_path(:item_id => item) }
+                          Reply
                     %li.dm-item.hide
                       %a{ :href => "#" }
                         DM
@@ -53,7 +53,7 @@
 
                     - if self?(item.user)
                       %li.delete-item
-                        %a{ :href => absolute_item_url(item) }
+                        %a{ :href => item_path(item) }
                           DELETE
                     
   .bottom-shelf

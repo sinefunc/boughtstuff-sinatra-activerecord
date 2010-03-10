@@ -4,6 +4,21 @@
     
     $('form.remote-form').remoteForm();
     
+    $('.delete-item a').click(function() {
+      if (confirm('Are you sure you want to delete this item?')) {
+        $.ajax({
+          'url':       $(this).attr('href'),
+          'type':     'DELETE',
+          'dataType': 'json',
+          'success':  function(data) {
+            window.location.href = data['location'];
+          }
+        });
+      } 
+
+      return false;
+    });
+
     $('.reply-item a').click(function() {
       $.ubox($(this).attr('href'));
       return false;

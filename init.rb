@@ -24,6 +24,21 @@ class Main < Monk::Glue
   use     Twitter::Login, settings(:twitter)
   helpers Twitter::Login::Helpers
   helpers WillPaginate::ViewHelpers::Base
+  
+  # TODO : remove this in the future
+  #        after upgrading to sinatra 0.9.6, monk glue is not able to set this
+  #        properly for development env
+  set     :show_exceptions, (RACK_ENV == 'development')
+
+  not_found do
+    haml :'404'
+  end
+  
+  unless development?
+    error do
+      haml :'500'
+    end
+  end
 end
 
 Dir[root_path('lib/*.rb'), root_path("app/**/*.rb")].each do |file|
