@@ -21,10 +21,12 @@ describe "POST /api/v1/items" do
     end
 
     context "when no user login given" do 
+      before( :each ) do
+        post "/api/v1/items"    
+      end
+
       it do
-        lambda {
-          post "/api/v1/items"    
-        }.should raise_error(ActiveRecord::RecordNotFound) 
+        last_response.body.should match(/not found/i)
       end
     end
 

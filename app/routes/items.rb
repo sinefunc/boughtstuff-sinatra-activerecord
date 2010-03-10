@@ -36,12 +36,8 @@ class Main
   end
  
   get "/items/:id" do |id|
-    begin
-      @item = @account.items.find(id)
-      @item.viewed!
-    rescue ActiveRecord::RecordNotFound
-      raise Sinatra::NotFound
-    end
+    @item = @account.items.find(id)
+    @item.viewed!
       
     haml :'items/show'
   end
@@ -61,12 +57,8 @@ class Main
   delete "/items/:id" do |id|
     login_required
 
-    begin
-      @item = current_user.items.find(id)
-      @item.destroy
-    rescue ActiveRecord::RecordNotFound
-      raise Sinatra::NotFound
-    end
+    @item = current_user.items.find(id)
+    @item.destroy
    
     { :location => user_url(@item.user) }.to_json
   end

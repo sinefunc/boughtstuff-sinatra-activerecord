@@ -4,7 +4,7 @@ class Main
       @account.username if @account && @account.respond_to?(:username)
     end
   
-    def account_url(account_subdomain = default_account_subdomain, use_ssl = request_secure?)
+    def account_url(account_subdomain = default_account_subdomain, use_ssl = request.secure?)
       (use_ssl ? "https://" : "http://") + account_host(account_subdomain)
     end
   
@@ -25,10 +25,6 @@ class Main
     end
 
     private 
-      def request_secure?
-        request.scheme == 'https' || request.port == 443  
-      end
-
       def domain
         (request.host.split('.') - subdomains).join('.')
       end

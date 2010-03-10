@@ -25,16 +25,20 @@ class Main < Monk::Glue
   helpers Twitter::Login::Helpers
   helpers WillPaginate::ViewHelpers::Base
   
-  # TODO : remove this in the future
-  #        after upgrading to sinatra 0.9.6, monk glue is not able to set this
-  #        properly for development env
-  set     :show_exceptions, (RACK_ENV == 'development')
+  configure :development do
+    enable :show_exceptions
+    enable :reload_templates
+  end
 
   not_found do
     haml :'404'
   end
   
-  unless development?
+  error ActiveRecord::RecordNotFound do
+    haml :'404'    
+  end
+
+  unless show_exceptions
     error do
       haml :'500'
     end

@@ -5,9 +5,7 @@ class Main
     end
 
     def generate_unique_filename( filename )
-      extension = filename.index('.') ? filename.split('.').last : ''
-
-      [ UUID.sha1, extension.downcase ].join('.')
+      [ UUID.sha1, File.extname(filename).downcase ].join('.')
     end
   end
 
