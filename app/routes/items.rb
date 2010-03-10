@@ -5,7 +5,7 @@ class Main
 
       haml :'items/index'
     else
-      haml "%h1 No Homepage yet"
+      haml :'home'
     end
   end
   

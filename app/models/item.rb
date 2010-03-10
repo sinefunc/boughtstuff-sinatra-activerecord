@@ -14,6 +14,9 @@ class Item < ActiveRecord::Base
     :presence => true,
     :numericality => { :allow_blank => true, :greater_than_or_equal_to => 0 }
   
+  validates :src_twitter_status_id,
+    :uniqueness =>   { :allow_blank => true }
+
   scope :latest,      order('id DESC')
   scope :most_viewed, order('id DESC')
   scope :most_liked,  where('likes_count != 0').order('likes_count DESC')

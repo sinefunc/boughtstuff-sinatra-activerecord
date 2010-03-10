@@ -107,7 +107,7 @@ describe Item, "successfully posted" do
   end
 end
 
-describe "Item#broadcast_to_twitter" do
+describe Item, "#broadcast_to_twitter" do
   before(:each) do
     FakeWeb.register_uri(:post, "http://twitter.com/statuses/update.json",
                          :body => {:id => 123145}.to_json)
@@ -130,6 +130,32 @@ describe "Item#broadcast_to_twitter" do
 
       @item.broadcast_to_twitter
       @item.twitter_status_id.should be_nil
+    end
+  end
+end
+
+describe Item, "with no src twitter status id" do
+  it "should be creatable" do
+    lambda {
+      Factory(:item)
+    }.should_not raise_error(ActiveRecord::RecordInvalid)
+  end
+end
+
+describe Item, "with a src twitter status id that doesn't exist yet" do
+  it "should be creatable" do
+    lambda {
+      Factory(:item, :src_twitter_status_id => 1001)
+    }.should_not raise_error(ActiveRecord::RecordInvalid)
+  end
+
+  context "when another item comes in with the same src twitter status id" do
+    it "should not be creatable" do
+      Factory(:item, :src_twitter_status_id => 1001)
+
+      lambda {
+        Factory(:item, :src_twitter_status_id => 1001)
+      }.should raise_error(ActiveRecord::RecordInvalid)
     end
   end
 end
