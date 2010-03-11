@@ -14,5 +14,3 @@ Rspec.configure do |config|
   config.include Rspec::Matchers
   config.mock_with :rspec
 end
-
-
