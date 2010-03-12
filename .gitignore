@@ -3,3 +3,4 @@
 /vendor/webrat/vendor
 /public/system/**/*
 /tmp/restart.txt
+/tmp/webrat*

@@ -1,6 +1,8 @@
 class Main
   helpers do
     def image_tag( path, options = {} )
+      raise ArgumentError, "no path given" unless path
+
       src = 
         if path.index('/') == 0
           "#{app_config(:asset_host)}#{path}"

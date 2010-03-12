@@ -8,7 +8,7 @@ Webrat.configure do |config|
   config.mode = :rack
 end
 
-class MyWorld
+class RackTestWithWebratWorld
   include Rack::Test::Methods
   include Webrat::Methods
   include Webrat::Matchers
@@ -21,9 +21,9 @@ class MyWorld
   end
 
   def response
-    @_rack_test_sessions[:default]
+    @_rack_test_sessions[:default].last_response
   end
 end
 
-World{MyWorld.new}
+World{RackTestWithWebratWorld.new}
 

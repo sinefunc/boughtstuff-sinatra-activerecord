@@ -18,9 +18,12 @@ defaults: &defaults
 :development:
   <<: *defaults
   :log_level: debug
+    
 
 :test:
   <<: *defaults
+  :session: 
+    :path: '/'
 
 :production:
   <<: *defaults

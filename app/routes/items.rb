@@ -9,7 +9,7 @@ class Main
     end
   end
   
-  get "/items" do
+  get "/items/?" do
     @items = @account.items.latest.paginate(page: params[:page])
 
     haml :'items/index'

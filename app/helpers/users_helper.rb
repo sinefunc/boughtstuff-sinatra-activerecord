@@ -5,6 +5,8 @@ class Main
     end
 
     def user_avatar( user )
+      return if not user.avatar_url
+
       image_tag user.avatar_url, :alt => user.name
     end
 

@@ -140,8 +140,6 @@ end
 
 Then /^(?:|I )should see "([^\"]*)"$/ do |text|
   if respond_to?(:contain)
-    puts instance_variables.inspect
-
     response.should contain(text)
   else
     assert_contain text
