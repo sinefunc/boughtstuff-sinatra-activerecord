@@ -2,13 +2,13 @@ defaults: &defaults
   :log_level: warn
   :asset_host: "http://boughtstuff.local:3000"
   :session:
-    :domain: ".boughtstuff.local"
+    :key: "_boughtstuff_session"
   
   :photos:
     :storage:   :file
     :root:      ':root/public'
     :store_dir: ':root/public/system/uploads'
-    :cache_dir: ':root/public/system/uploads/tmp'
+    :cache_dir: ':root/tmp/uploads'
 
   :twitter:
     :consumer_key: "2YTK8XIszlR12aVju0tA"
@@ -22,20 +22,16 @@ defaults: &defaults
 
 :test:
   <<: *defaults
-  :session: 
-    :path: '/'
 
 :production:
   <<: *defaults
   :asset_host: "http://d20r1yy71waydm.cloudfront.net"
-  :session:
-    :domain: ".boughtstuff.com"
 
   :photos:
     :storage: :s3
     :root:      ':root/public'
     :store_dir: 'uploads'
-    :cache_dir: ':root/public/system/uploads/tmp'
+    :cache_dir: ':root/tmp/uploads'
     :bucket:    'boughtstuff.com'
     :s3_access_key_id: "1K4Y2FT2FFD0WYZJYT02"
     :s3_secret_access_key: "qWCV1IOH/BkkqyrSMuL86/gzbnsC55QxAhy18uD/"

@@ -8,6 +8,6 @@ class StreamedFile < Tempfile
   end
 
   def original_filename
-    [ Digest::SHA1.hexdigest(@url), File.extname(@url).downcase ].join('.')
+    [ Digest::SHA1.hexdigest(@url), File.extname(@url).downcase ].join
   end
 end

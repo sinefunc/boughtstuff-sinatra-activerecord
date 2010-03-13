@@ -1,28 +1,40 @@
 class Main
-  get "/" do
-    if User === @account 
-      @items = @account.items.latest.paginate(page: params[:page])
-
-      haml :'items/index'
-    else
-      haml :'home'
+  get '/:username/:filter' do |username, filter|
+    if %w(items most-viewed liked friends-items).include?(filter)
+      unless username == AnonymousUser::USERNAME
+        @account = User.find_by_username( username )
+      else
+        @account = AnonymousUser.new
+      end
     end
+
+    pass
+  end
+
+  get '/' do
+    haml :'home'
   end
   
-  get "/items/?" do
+  get '/:username/items' do
     @items = @account.items.latest.paginate(page: params[:page])
 
     haml :'items/index'
   end
 
-  get "/most-viewed" do
-    @items = @account.items.latest.paginate(page: params[:page])
+  get "/:username/most-viewed" do
+    @items = @account.items.most_viewed.paginate(page: params[:page])
 
     haml :'items/index'
   end
 
-  get "/liked" do
+  get "/:username/liked" do
     @items = @account.likes_items.latest.paginate(page: params[:page])
+
+    haml :'items/index'
+  end
+
+  get '/:username/friends-items' do
+    @items = @account.friends_items.latest.paginate(:page => params[:page])
 
     haml :'items/index'
   end
@@ -35,8 +47,9 @@ class Main
     haml :'items/new'
   end
  
-  get "/items/:id" do |id|
-    @item = @account.items.find(id)
+  get "/:username/:id" do |username, id|
+    @account = User.find_by_username(username)
+    @item    = @account.items.find(id)
     @item.viewed!
       
     haml :'items/show'
@@ -54,18 +67,12 @@ class Main
     end
   end
   
-  delete "/items/:id" do |id|
+  delete "/item/:id" do |id|
     login_required
 
     @item = current_user.items.find(id)
     @item.destroy
    
     { :location => user_url(@item.user) }.to_json
-  end
-
-  get '/friends-items' do
-    @items = @account.friends_items.latest.paginate(:page => params[:page])
-
-    haml :'items/index'
   end
 end

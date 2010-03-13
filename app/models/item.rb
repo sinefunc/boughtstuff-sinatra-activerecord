@@ -18,7 +18,7 @@ class Item < ActiveRecord::Base
     :uniqueness =>   { :allow_blank => true }
 
   scope :latest,      order('id DESC')
-  scope :most_viewed, order('id DESC')
+  scope :most_viewed, order('views_count DESC')
   scope :most_liked,  where('likes_count != 0').order('likes_count DESC')
   scope :tagged,      lambda { |t| includes(:tags).where('tags.name' => t) }
 
@@ -76,6 +76,10 @@ class Item < ActiveRecord::Base
   
   def viewed!
     self.class.increment_counter(:views_count, self.id)
+  end
+
+  def to_param
+    "%s-%s" % [ id, name.gsub(/[^a-zA-Z0-9]/, '-').downcase ]
   end
 
   private

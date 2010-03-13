@@ -24,7 +24,7 @@ class Main
         if path.blank?
           request.request_method == method.upcase
         elsif method.blank?
-          path.index(request.fullpath)
+          request.fullpath.index(path)
         else
           request.fullpath.index(path) && method.upcase == request.request_method
         end

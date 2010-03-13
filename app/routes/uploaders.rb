@@ -5,8 +5,29 @@ class Main
     end
 
     def generate_unique_filename( filename )
-      [ UUID.sha1, File.extname(filename).downcase ].join('.')
+      [ UUID.sha1, File.extname(filename).downcase ].join
     end
+
+    def assert_valid_cache_id!( cache_id )
+      unless cache_id.match(Format::CARRIER_WAVE_CACHE_ID)
+        raise "Not a valid cache id #{cache_id}" 
+      end
+    end
+
+    def assert_valid_filename!( filename )
+      unless filename.match(Format::CARRIER_WAVE_FILENAME)
+        raise "Not a valid filename #{filename}" 
+      end
+    end
+  end
+  
+  get  '/tmp/uploads/:cache_id/:filename' do |cache_id, filename|
+    assert_valid_cache_id!( cache_id )
+    assert_valid_filename!( filename )
+  
+
+    send_file root_path("tmp", "uploads", cache_id, filename), 
+      :disposition => 'inline' 
   end
 
   post '/uploader' do

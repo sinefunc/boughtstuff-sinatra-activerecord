@@ -7,7 +7,7 @@ class TwitterProxy
   end
   
   [ :get, :put, :delete, :post, :head ].each do |meth|
-    if RACK_ENV == 'development' and not [ :get ].include?(meth)
+    if ENV["ENABLE_TWITTER_STATUS_POSTING"].nil?
       define_method meth do |path, *arguments|
         logger.info "#{meth}, #{path}, #{arguments.inspect}"
         puts "#{meth}, #{path}, #{arguments.inspect}"

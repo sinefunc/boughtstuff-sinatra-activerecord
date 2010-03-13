@@ -1,5 +1,8 @@
 # encoding: utf-8
 module Format
+  CARRIER_WAVE_CACHE_ID = /\A[0-9\-]+\z/
+  CARRIER_WAVE_FILENAME = /\A[0-9\_a-zA-Z]+\.[a-zA-Z]{3,4}\z/
+
   USERNAME          = /\A([0-9a-z\-\.]+)\z/
   USERNAME_SELECTOR = /([0-9a-z\-\.]+)/
   

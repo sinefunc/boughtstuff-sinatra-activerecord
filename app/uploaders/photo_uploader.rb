@@ -1,5 +1,5 @@
 class PhotoUploader < CarrierWave::Uploader::Base
-  include CarrierWave::ImageScience
+  include CarrierWave::RMagick
   
   settings(:photos).each do |key, value|
     send key, String === value ? value.gsub(':root', root_path) : value
@@ -19,5 +19,10 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   def default_url
     "/photos/#{version_name}/missing.jpg"
+  end
+
+  def url( *args )
+    ret = super(*args) 
+    ret.gsub(root_path, '')
   end
 end

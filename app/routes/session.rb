@@ -1,12 +1,4 @@
 class Main
-  before do
-    if account_subdomain and account_subdomain != 'www'
-      @account = User.find_by_username( account_subdomain )
-    else
-      @account = AnonymousUser.new
-    end 
-  end
-
   get '/authenticated' do
     if twitter_user
       self.current_user = 

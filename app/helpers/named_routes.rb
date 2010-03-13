@@ -1,31 +1,23 @@
 class Main
   helpers do
-    def root_url( options = {} )
-      if options.empty?
-        '/'  
-      elsif options[:host]
-        options[:host]
-      end
+    def root_url
+      '/'  
     end
     
     def user_url( user )
-      account_url(user.username) + '/items'
+      '/%s/items' % user.username
     end
 
     def new_item_path
       '/items/new' 
     end
 
-    def everyone_items_url
-      account_url('www') + '/items'
-    end
-
-    def absolute_item_url( item )
-      account_url(item.user.username) + '/items/' + item.to_param 
+    def everyones_items_url
+      '/%s/items' % AnonymousUser::USERNAME
     end
 
     def item_path( item )
-      '/items/' + item.to_param
+      '/%s/%s' % [ item.user.username, item.to_param ]
     end
 
     def new_reply_path(options = {})
@@ -37,7 +29,7 @@ class Main
     end
 
     def most_viewed_url
-      '/most-viewed'
+      '/%s/most-viewed' % AnonymousUser::USERNAME
     end
 
     def login_url
@@ -52,24 +44,30 @@ class Main
       '/items'
     end
   
-    def tagged_items_path( tag )
-      '/items/tagged/' + tag
+    def tagged_items_path( user, tag )
+      '/%s/tagged/%s' % [ user.username, tag ]
     end
 
-    def liked_path
-      '/liked'
+    def liked_path( user )
+      case user
+      when User
+        '/%s/liked' % user.username
+      else
+        '/%s/liked' % AnonymousUser::USERNAME
+      end
     end
 
-    def like_path( item )
-      '/likes/' + item.to_s
+    def like_path( item_id )
+      raise TypeError unless Fixnum === item_id
+      '/likes/%s' % item_id
     end
 
     def likes_path( options = {} )
       append_query_string( "/likes", options ) 
     end
 
-    def friends_items_path
-      '/friends-items' 
+    def friends_items_path( user )
+      '/%s/friends-items' % user.username
     end
 
     private

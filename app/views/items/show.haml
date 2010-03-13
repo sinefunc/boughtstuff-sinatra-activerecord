@@ -67,7 +67,7 @@
     %ul.notList.clearFix.tag-list
       - @item.tags.each do |tag|
         %li.colL
-          %a{ :href => tagged_items_path(tag.name) }= tag.name
+          %a{ :href => tagged_items_path(@item.user, tag.name) }= tag.name
 
 #item-image
   =link_to 'close this', 'javascript:void(0);', :rel=>"ubox-close", :class => "ubox-close"
