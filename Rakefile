@@ -7,12 +7,11 @@ load 'lib/tasks/database.rake'
 desc "Generate a .gems manifest file for use with heroku"
 task :create_heroku_gems_manifest do
   skip = %w(factory_girl database_cleaner daemons eventmachine faker
-            fakeweb fastthread gemcutter json json_pure linecache19 
-            mysql sqlite3-ruby nokogiri rake
-            rspec-core rspec rspec-expectations rspec-mocks 
-            rspec-rails-matchers ruby-debug-base19 ruby-debug19
+            fakeweb fastthread gemcutter json_pure linecache19 
+            mysql sqlite3-ruby nokogiri rspec-core rspec rspec-expectations 
+            rspec-mocks rspec-rails-matchers ruby-debug-base19 ruby-debug19
             thin timecop webrat ZenTest treetop cucumber term-ansicolor
-            polyglot)
+            polyglot image_science RubyInline)
   
   deps = %w(tzinfo builder memcache-client rack rack-test rack-mount 
             erubis mail text-format thor bundler i18n)
@@ -44,8 +43,9 @@ task :create_heroku_gems_manifest do
 end
 
 desc "Deploy to heroku"
-task :deploy do
+task :deploy => :create_heroku_gems_manifest do
   `cp .git/config .gitgithub`
   `cp .githeroku  .git/config`
-
+  
+  `git add . && git commit -m "updated .gems manifest" && git push origin master`
 end
