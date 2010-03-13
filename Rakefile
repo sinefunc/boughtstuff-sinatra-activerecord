@@ -30,3 +30,10 @@ task :create_heroku_gems_manifest do
   puts " => Created .gems"
   puts File.read('.gems')
 end
+
+desc "Deploy to heroku"
+task :deploy do
+  `cp .git/config .gitgithub`
+  `cp .githeroku  .git/config`
+
+end

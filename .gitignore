@@ -4,3 +4,10 @@
 /public/system/**/*
 /tmp/restart.txt
 /tmp/webrat*
+/log/*.log
+/log/*.log*
+.DS_Store
+/tmp/**/*
+/db/*.sqlite3
+/coverage
+/rerun.txt
