@@ -11,7 +11,8 @@ task :create_heroku_gems_manifest do
             mysql sqlite3-ruby nokogiri rack rack-test rake
             rspec-core rspec rspec-expectations rspec-mocks 
             rspec-rails-matchers ruby-debug-base19 ruby-debug19
-            thin timecop webrat ZenTest)
+            thin timecop webrat ZenTest treetop cucumber term-ansicolor
+            polyglot)
 
   rvm_gems = File.read("config/rvm.gems").split("\n")
   
