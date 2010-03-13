@@ -45,9 +45,6 @@ task :create_heroku_gems_manifest do
 end
 
 desc "Deploy to heroku"
-task :deploy => :create_heroku_gems_manifest do
-  # `cp .git/config .gitgithub`
-  # `cp .githeroku  .git/config`
-  
+task :deploy => [ :create_heroku_gems_manifest, "assets:package" ] do
   `git add . && git commit -m "updated .gems manifest" && git push heroku-staging master`
 end
