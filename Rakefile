@@ -37,6 +37,7 @@ task :create_heroku_gems_manifest do
     gems.each do |name, version|
       f.write "#{name} --version #{version}\n"
     end
+    f.write "pg"
   end
   
   puts " => Created .gems"
@@ -45,8 +46,8 @@ end
 
 desc "Deploy to heroku"
 task :deploy => :create_heroku_gems_manifest do
-  `cp .git/config .gitgithub`
-  `cp .githeroku  .git/config`
+  # `cp .git/config .gitgithub`
+  # `cp .githeroku  .git/config`
   
-  `git add . && git commit -m "updated .gems manifest" && git push origin master`
+  `git add . && git commit -m "updated .gems manifest" && git push heroku-staging master`
 end

@@ -12,7 +12,13 @@ require 'active_support'
 require 'active_record'
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
-require 'mysql'
+begin
+  require 'mysql'
+rescue LoadError
+  require 'pg'
+rescue LoadError
+  require 'sqlite3-ruby'
+end
 
 Dir[ root_path('config', 'initializers', '*.rb') ].each { |f| require f }
 
