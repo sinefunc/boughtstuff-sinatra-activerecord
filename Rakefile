@@ -11,7 +11,8 @@ task :create_heroku_gems_manifest do
             mysql sqlite3-ruby nokogiri rspec-core rspec rspec-expectations 
             rspec-mocks rspec-rails-matchers ruby-debug-base19 ruby-debug19
             thin timecop webrat ZenTest treetop cucumber term-ansicolor
-            polyglot image_science RubyInline)
+            polyglot image_science RubyInline heroku configuration
+            launchy)
   
   deps = %w(tzinfo builder memcache-client rack rack-test rack-mount 
             erubis mail text-format thor bundler i18n)
