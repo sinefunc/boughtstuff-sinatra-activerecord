@@ -22,7 +22,9 @@ namespace :assets do
         key = f.gsub(/public\//, '')
         puts "putting #{f} into S3 as #{key}"
 
-        AWS::S3::S3Object.store(key, open(f), BUCKET, :access => :public_read)
+        AWS::S3::S3Object.store(
+          key, open(f), config[:s3_bucket], :access => :public_read
+        )
       end
 
 
