@@ -11,7 +11,8 @@ namespace :assets do
       ].map { |glob| Dir[glob] }.flatten
 
       AWS::S3::Base.establish_connection!(
-        config[:s3_access_key_id], config[:s3_secret_access_key]
+        :access_key_id => config[:s3_access_key_id],
+        :secret_access_key => config[:s3_secret_access_key]
       )
 
       bucket = AWS::S3::Bucket.find(config[:s3_bucket])
