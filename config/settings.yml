@@ -32,7 +32,7 @@ defaults: &defaults
     :root:      ':root/public'
     :store_dir: 'uploads'
     :cache_dir: ':root/tmp/uploads'
-    :s3_bucket: 'boughtstuff.com'
+    :s3_bucket: 'assets.boughtstuff.com'
     :s3_access_key_id: "1K4Y2FT2FFD0WYZJYT02"
     :s3_secret_access_key: "qWCV1IOH/BkkqyrSMuL86/gzbnsC55QxAhy18uD/"
 

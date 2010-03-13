@@ -2,7 +2,7 @@ task :environment do
   require 'init'
 end
 
-load 'lib/tasks/database.rake'
+Dir['lib/tasks/*.rake'].each { |f| load f }
 
 desc "Generate a .gems manifest file for use with heroku"
 task :create_heroku_gems_manifest do
