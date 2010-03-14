@@ -32,9 +32,12 @@
 
       this.success = function(data) {
         console.log(" ---> in success function");
-        
+        console.log(data); 
         var responseText = $(data).text();
+        console.log(responseText);
+        console.log(typeof responseText);
         var data = JSON.parse(responseText);
+        console.log(data);
 
         if (data.thumb) {
           // TODO : extract this selector out
