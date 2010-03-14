@@ -35,7 +35,7 @@ class UUID
 	private_class_method :new
 
 	class << self
-      def to_sha1
+      def sha1
         Digest::SHA1.hexdigest(create.to_s)
       end
 

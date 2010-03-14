@@ -31,25 +31,35 @@ class Main
   end
 
   post '/uploader' do
+    logger.debug "-----> Receiving upload in /uploader"
+
     uploader = PhotoUploader.new
     
     begin
       if params[:item][:photo_url].present?
+        logger.debug "-----> Photo URL given (#{params[:item][:photo_url]})"
         uploader.cache!( StreamedFile.new(params[:item][:photo_url]) )
       else
+        logger.debug "-----> Photo file given (#{params[:item][:photo][:filename]})"
         params[:item][:photo][:filename] = 
           generate_unique_filename( params[:item][:photo][:filename] )
 
         uploader.cache!(params[:item][:photo])
       end
     rescue CarrierWave::IntegrityError, CarrierWave::ProcessingError
+      logger.debug " ! Got an error while processing"
       { errors: 'processing error' }.to_json
     else
-      { thumb:      uploader.thumb.url,
+      data = { 
+        thumb:      uploader.thumb.url,
         original:   uploader.large.url,
         filename:   cached_file_id(uploader),
         title:      sprintf('%.15s...', uploader.filename),
-      }.to_json
+      }
+
+      logger.debug "-----> Returning response: #{data.inspect}"
+
+      data.to_json
     end
   end
 end
