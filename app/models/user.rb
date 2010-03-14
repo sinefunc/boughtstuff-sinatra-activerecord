@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
   before_save :generate_canonical_username_from_login
   
   def self.find_or_create_by( attrs, access_token )
-    user = find_or_initialize_by_twitter_id( attrs[:id] )
+    user = first( :twitter_id => attrs[:id] )
+    user = new( :twitter_id => attrs[:id] ) unless user
     user.login              = attrs[:screen_name]
     user.name               = attrs[:name]
     user.profile_image_url  = attrs[:profile_image_url]
