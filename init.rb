@@ -51,7 +51,13 @@ class Main < Monk::Glue
   end
 end
 
-Dir[root_path('lib/*.rb'), root_path("app/**/*.rb")].each do |file|
+Dir[ root_path('lib/*.rb') ].each { |file| require file }
+
+Dir[ root_path('app/concerns/*.rb'), root_path('app/models/*.rb'), root_path('app/uploaders/*.rb') ].each do |file|
+  Object.autoload File.basename(file, '.rb').camelize, file
+end
+
+Dir[root_path('app/routes/*.rb'), root_path('app/helpers/*.rb')].each do |file|
   require file
 end
 
