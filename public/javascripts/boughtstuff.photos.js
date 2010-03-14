@@ -32,6 +32,10 @@
 
       this.success = function(data) {
         console.log(" ---> in success function");
+        
+        var responseText = $(data).text();
+        var data = JSON.parse(responseText);
+
         if (data.thumb) {
           // TODO : extract this selector out
           $('span.filename').deletePreview('#item_photo, #item_photo_url', 
