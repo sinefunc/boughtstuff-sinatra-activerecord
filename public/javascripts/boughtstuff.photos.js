@@ -60,8 +60,6 @@
         console.log(" ---> can be submitted");
         this.$form.ajaxSubmit({
           'iframe': true,
-          'data'  : { 'format': 'iframe' },
-          'dataType': 'json',
           'url': '/uploader',
           'beforeSubmit': this.beforeSubmit,
           'success': this.success

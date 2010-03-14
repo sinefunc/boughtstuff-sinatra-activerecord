@@ -31,7 +31,7 @@ class Main
   end
 
   post '/uploader' do
-    content_type 'text/json'
+    content_type 'text/plain'
     
     logger.debug "-----> Receiving upload in /uploader"
 
