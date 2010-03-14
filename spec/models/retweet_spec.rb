@@ -24,11 +24,11 @@ describe Retweet, "with an item name of 140 A's and an ID of 1001" do
   }
 end
 
-describe Retweet, "with an Item of 140 chars by abcdefghijklmno with 11 digits" do
+describe Retweet, "with an Item of 140 chars by abcdefghijklmno with 10 digits" do
   subject do
     item = Factory.build(:item, :name => ('A' * 140),
                          :user => Factory(:user, :login => 'abcdefghijklmno'))
-    item.id = 12345678901
+    item.id = 1234567890
     item.save!
 
     Retweet.new(:item => item, :sender => item.user)
@@ -37,6 +37,6 @@ describe Retweet, "with an Item of 140 chars by abcdefghijklmno with 11 digits" 
   it { should be_valid }
 
   its(:body) { 
-    subject.length.should == 140
+    subject.length.should == 139
   }
 end

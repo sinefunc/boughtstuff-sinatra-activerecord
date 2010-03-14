@@ -64,11 +64,11 @@ describe Purchase, "#post" do
   end
 end
 
-describe Purchase, "with an Item of 140 chars by abcdefghijklmno with 11 digits" do
+describe Purchase, "with an Item of 140 chars by abcdefghijklmno with 10 digits" do
   subject do
     item = Factory.build(:item, :name => ('A' * 140),
                          :user => Factory(:user, :login => 'abcdefghijklmno'))
-    item.id = 10000000000
+    item.id = 1000000000
     item.save!
 
     Purchase.new(:item => item, :sender => item.user)
@@ -77,7 +77,7 @@ describe Purchase, "with an Item of 140 chars by abcdefghijklmno with 11 digits"
   it { should be_valid }
 
   its(:body) { 
-    subject.length.should == 140
+    subject.length.should == 139
   }
 end
 

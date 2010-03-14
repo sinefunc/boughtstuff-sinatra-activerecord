@@ -11,3 +11,4 @@
 /db/*.sqlite3
 /coverage
 /rerun.txt
+/config/database.yml

@@ -1,5 +1,5 @@
 defaults: &DEFAULTS
-  adapter:  mysql
+  adapter:  postgresql
   username: root
   password:
   encoding: utf8
@@ -12,11 +12,3 @@ development:
 test:
   <<: *DEFAULTS
   database: boughtstuff_test
-
-production:
-  adapter:  mysql
-  database: boughtstuff
-  username: boughtstuff
-  password: tzhSPhTiwlQfVjs5o54V
-  encoding: utf8
-  pool: 5
