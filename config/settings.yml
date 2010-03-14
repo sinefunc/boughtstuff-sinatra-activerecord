@@ -26,8 +26,7 @@ defaults: &defaults
 :production:
   <<: *defaults
   :log_level: debug
-  # :asset_host: "http://d20r1yy71waydm.cloudfront.net"
-  :asset_host: "http://furious-day-35.heroku.com"
+  :asset_host: "http://d20r1yy71waydm.cloudfront.net"
   :photos:
     :storage: :s3
     :root:      ':root/public'

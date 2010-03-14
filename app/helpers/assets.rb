@@ -6,7 +6,7 @@ class Main
       src = 
         if path.index('/') == 0
           "#{app_config(:asset_host)}#{path}"
-        elsif path.index('http') == 0
+        elsif path.index('http') == 0 or path.index('/tmp/uploads') == 0
           path
         else
           "#{app_config(:asset_host)}/images/#{path}"
