@@ -1,7 +1,7 @@
 class Users < ActiveRecord::Migration
   def self.up
     create_table "users", :force => true do |t|
-      t.string   "twitter_id"
+      t.integer  "twitter_id"
       t.string   "login"
       t.string   "access_token"
       t.string   "access_secret"
