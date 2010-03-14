@@ -5,6 +5,7 @@ class StreamedFile < Tempfile
     @url = url 
     super original_filename
     write Kernel.open(@url).read
+    rewind
   end
 
   def original_filename
