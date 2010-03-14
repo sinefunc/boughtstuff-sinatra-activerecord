@@ -17,7 +17,7 @@ task :create_heroku_gems_manifest do
   deps = %w(tzinfo builder memcache-client rack rack-test rack-mount 
             erubis mail text-format thor bundler i18n)
   
-  puts  "-----> Starting extraction of config/rvm.gems"
+  puts  "\n-----> Starting extraction of config/rvm.gems"
 
   rvm_gems = File.read("config/rvm.gems").split("\n")
   
@@ -52,7 +52,7 @@ task :create_heroku_gems_manifest do
 end
 
 desc "Deploy to heroku"
-task :deploy => [ :create_heroku_gems_manifest, "assets:package" ] do
+task :deploy => [ :create_heroku_gems_manifest, "assets:packager:build_all" ] do
   `git add . && git commit -m "updated .gems manifest on #{Time.now.utc}" && git push heroku-staging master`
 
   `heroku rake assets:upload:s3`
