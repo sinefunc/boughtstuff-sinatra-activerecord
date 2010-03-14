@@ -25,6 +25,7 @@ class Main
           request.request_method == method.upcase
         elsif method.blank?
           request.fullpath.index(path)
+          request.fullpath.match( %r{#{path}$} )
         else
           request.fullpath.index(path) && method.upcase == request.request_method
         end
