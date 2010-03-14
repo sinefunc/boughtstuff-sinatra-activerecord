@@ -1,4 +1,4 @@
-(function() { 
+(function($) { 
   $.fn.destroyOnClick = function() {
     $('a[data-method="delete"]').click(function() {
       var csrfParam = $('meta[name=csrf-param]').attr('content'),
@@ -20,7 +20,7 @@
 
       return false;
     });
-  }
+  };
 
   $.fn.deletePreview = function(fileInput, imageUrl) {
     var $this            = $(this),
@@ -34,7 +34,7 @@
     $imagePreviewImg.attr('src', imageUrl);
     $zoomLink.attr('href', imageUrl);
     $this.parents('span').remove();
-  }
+  };
 
   $.fn.autoUpload = function(options) {
     var photo = new $.Photo(this, options),
@@ -43,7 +43,7 @@
     $base.change(function() {
       photo.submit();
     });
-  }
+  };
 
   $.fn.autoScrape = function(options) {
     var photo = new $.Photo(this, options),
@@ -52,7 +52,7 @@
     $base.blur(function() {
       photo.submit();
     });
-  }
+  };
 
   $.fn.likeUnlikeLink = function() {
     $(this).click(function() {
@@ -74,7 +74,7 @@
 
       return false;
     });
-  }
+  };
 
   $.fn.inlineError = function( msg ) {
     var $html = 
@@ -83,7 +83,7 @@
     $("label[for='" + $(this).attr('id') + "']").append( 
       $html.find('a').html( msg ).end()
     );
-  }
+  };
   
   $.fn.submitWithIframe = function() {
     $(this).submit(function() {
@@ -101,8 +101,8 @@
         'success': function(data) {
           $buttonLine.toggleClass('hide');
 
-          if (data['location']) {
-            window.location.href = data['location'];
+          if (data.location) {
+            window.location.href = data.location;
           } else {
             $('.tool-tip').remove();
             $.each(data, function( field, errors ) {
@@ -114,11 +114,11 @@
       });
       return false;
     });
-  }
+  };
 
   $.assetHost = function( assetPath ) {
     var assetHost = $('meta[name=asset-host]').attr('content');
 
     return assetHost + assetPath;
-  }
+  };
 })(jQuery);

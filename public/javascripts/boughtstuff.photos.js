@@ -10,11 +10,11 @@
           $replacement     = $(
             '<span><span class="filename"></span>&nbsp;' +
             '<a class="delete-preview" href="#">Delete</a>' +
-            '<input type="hidden" name="' + options['field'] + '" value="" /></span>'
+            '<input type="hidden" name="' + options.field + '" value="" /></span>'
           ),
           $spinner         = $(
             '<img src="" alt="Please wait..." />'
-          ).attr('src', options['spinner']);
+          ).attr('src', options.spinner);
 
       this.$form = $form;
 
@@ -23,29 +23,29 @@
       };
 
       this.beforeSubmit = function() {
-        setTimeout(function() {
+        window.setTimeout(function() {
           $base.attr('disabled', true).addClass('hide').after($spinner);
         }, 500);
       };
 
       this.success = function(data) {
-        if (data['thumb']) {
+        if (data.thumb) {
           // TODO : extract this selector out
           $('span.filename').deletePreview('#item_photo, #item_photo_url', 
                              $.assetHost('/photos/thumb/missing.jpg'));
         
-          $imagePreviewImg.hide().attr('src', data['thumb']).fadeIn();
+          $imagePreviewImg.hide().attr('src', data.thumb).fadeIn();
 
-          $imagePreview.attr('href', data['original']);
-          $zoomLink.attr('href', data['original']);
+          $imagePreview.attr('href', data.original);
+          $zoomLink.attr('href', data.original);
 
           $base.after(
-            $replacement.find('.filename').text(data['title']).end().
-              find('input[type=hidden]').val(data['filename']).end()
+            $replacement.find('.filename').text(data.title).end().
+              find('input[type=hidden]').val(data.filename).end()
           );
           $base.addClass('hide').attr('disabled', true);
         } else {
-          alert("There were problems with uploading the file\n\n");
+          window.alert("There were problems with uploading the file\n\n");
         }
         $spinner.remove();
       };

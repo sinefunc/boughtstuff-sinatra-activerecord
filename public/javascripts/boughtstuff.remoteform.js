@@ -1,4 +1,4 @@
-(function() { 
+(function($) { 
   $.fn.remoteForm = function() {
     $(this).livequery(function() {
       var $this = $(this),
@@ -16,9 +16,9 @@
         },
 
         'success'       : function(data) {
-          if (data['location']) {
+          if (data.location) {
             if ($('#ubox-container').css('display') == 'none') {
-              window.location.href = data['location'];
+              window.location.href = data.location;
             } else {
               $('.initial, .success', '#ubox-container').toggleClass('hide');
             }
@@ -34,5 +34,5 @@
         }
       });
     });
-  }
+  };
 })(jQuery);

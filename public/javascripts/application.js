@@ -1,17 +1,17 @@
-(function() {
+(function($) {
   $(function() {
 	  $.ajaxSettings.accepts._default = "text/javascript, text/html, application/xml, text/xml, */*";
     
     $('form.remote-form').remoteForm();
     
     $('.delete-item a').click(function() {
-      if (confirm('Are you sure you want to delete this item?')) {
+      if (window.confirm('Are you sure you want to delete this item?')) {
         $.ajax({
           'url':       $(this).attr('href'),
           'type':     'DELETE',
           'dataType': 'json',
           'success':  function(data) {
-            window.location.href = data['location'];
+            window.location.href = data.location;
           }
         });
       } 
@@ -75,7 +75,7 @@
       $.get('/items/' + matches[1], 'format=js');
       
       var $item = $('#item_' + matches[1]);
-      $sparkly = $('<em class="ir sparkly-focus">Current Item</em>');
+      var $sparkly = $('<em class="ir sparkly-focus">Current Item</em>');
       $item.prepend($sparkly);
 
       window.setInterval(function() {
