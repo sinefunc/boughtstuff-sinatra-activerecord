@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100310091736) do
+ActiveRecord::Schema.define(:version => 20100314003516) do
 
   create_table "items", :force => true do |t|
     t.integer  "user_id"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(:version => 20100310091736) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "twitter_id"
+    t.integer  "twitter_id"
     t.string   "login"
     t.string   "access_token"
     t.string   "access_secret"
