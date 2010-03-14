@@ -26,7 +26,8 @@ defaults: &defaults
 :production:
   <<: *defaults
   :log_level: debug
-  :asset_host: "http://d20r1yy71waydm.cloudfront.net"
+  # :asset_host: "http://d20r1yy71waydm.cloudfront.net"
+  :asset_host: "http://s3.amazonaws.com/assets.boughtstuff.com"
   :photos:
     :storage: :s3
     :root:      ':root/public'
