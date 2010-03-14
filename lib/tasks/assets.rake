@@ -2,7 +2,7 @@ ROOT_DIR = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 
 load 'vendor/asset_packager/lib/tasks/asset_packager_tasks.rake'
 
-namespace :assets do
+namespace :asset do
   namespace :upload do
     desc "Upload all assets to assets.boughtstuff.com"
     task :s3 => :environment do

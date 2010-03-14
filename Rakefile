@@ -52,8 +52,8 @@ task :create_heroku_gems_manifest do
 end
 
 desc "Deploy to heroku"
-task :deploy => [ :create_heroku_gems_manifest, "assets:packager:build_all" ] do
+task :deploy => [ :create_heroku_gems_manifest, "asset:packager:build_all" ] do
   `git add . && git commit -m "updated .gems manifest on #{Time.now.utc}" && git push heroku-staging master`
 
-  `heroku rake assets:upload:s3`
+  `heroku rake asset:upload:s3`
 end
