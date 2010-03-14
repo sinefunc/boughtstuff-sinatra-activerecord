@@ -16,9 +16,14 @@ task :create_heroku_gems_manifest do
   
   deps = %w(tzinfo builder memcache-client rack rack-test rack-mount 
             erubis mail text-format thor bundler i18n)
+  
+  puts  "-----> Starting extraction of config/rvm.gems"
 
   rvm_gems = File.read("config/rvm.gems").split("\n")
   
+  puts  "       Read #{rvm_gems.size - 1} gem entries..."
+
+  print "-----> Sorting through the different gems... "
   gems = []
   rvm_gems.each do |gem|
     name, version = gem.split(" -v")
@@ -32,6 +37,8 @@ task :create_heroku_gems_manifest do
       gems << [ name, version ]
     end
   end
+  puts  "Done!"
+  print "-----> Writing the .gems file now... "
   
   File.open('.gems', 'w') do |f|
     gems.each do |name, version|
@@ -39,12 +46,14 @@ task :create_heroku_gems_manifest do
     end
     f.write "pg"
   end
-  
-  puts " => Created .gems"
-  puts File.read('.gems')
+
+  puts  "Done!"
+  puts  "       Wrote #{gems.size + 1} gems to the manifest!"
 end
 
 desc "Deploy to heroku"
 task :deploy => [ :create_heroku_gems_manifest, "assets:package" ] do
-  `git add . && git commit -m "updated .gems manifest" && git push heroku-staging master`
+  `git add . && git commit -m "updated .gems manifest on #{Time.now.utc}" && git push heroku-staging master`
+
+  `heroku rake assets:upload:s3`
 end
