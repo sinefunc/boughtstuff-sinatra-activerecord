@@ -31,6 +31,8 @@ class Main
   end
 
   post '/uploader' do
+    content_type 'text/json'
+    
     logger.debug "-----> Receiving upload in /uploader"
 
     uploader = PhotoUploader.new

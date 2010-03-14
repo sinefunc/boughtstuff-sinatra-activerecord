@@ -7,6 +7,8 @@ class Main
   end
 
   post "/replies" do
+    content_type 'text/json'
+    
     @reply = Reply.new(params[:reply])
     @reply.sender = current_user
   

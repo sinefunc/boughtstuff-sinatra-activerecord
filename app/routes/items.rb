@@ -58,6 +58,8 @@ class Main
   post "/items" do
     login_required
     
+    content_type 'text/json'
+    
     @item = current_user.items.build(params[:item])
     
     if @item.save
@@ -69,7 +71,9 @@ class Main
   
   delete "/item/:id" do |id|
     login_required
-
+    
+    content_type 'text/json'
+    
     @item = current_user.items.find(id)
     @item.destroy
    
