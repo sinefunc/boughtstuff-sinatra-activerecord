@@ -41,16 +41,22 @@ class Main
 
     private
       def stylesheet_link_tag( stylesheet )
+        t = File.mtime(root_path('public', 'stylesheets', "#{stylesheet}.css"))
+
         sprintf(
-          '<link href="%s.css" type="text/css" rel="stylesheet" />',
-          [app_config(:asset_host), 'stylesheets', stylesheet].join('/')
+          '<link href="%s.css?%s" type="text/css" rel="stylesheet" />',
+          [app_config(:asset_host), 'stylesheets', stylesheet].join('/'),
+          t.to_i
         )
       end
 
       def javascript_include_tag( javascript )
+        t = File.mtime(root_path('public', 'javascripts', "#{javascript}.js"))
+
         sprintf(
-          '<script src="%s.js" type="text/javascript"></script>',
-          [app_config(:asset_host), 'javascripts', javascript].join('/')
+          '<script src="%s.js?%s" type="text/javascript"></script>',
+          [app_config(:asset_host), 'javascripts', javascript].join('/'),
+          t.to_i
         )
       end
 
