@@ -23,12 +23,15 @@
       };
 
       this.beforeSubmit = function() {
+        console.log(" ---> in before submit...");
         window.setTimeout(function() {
           $base.attr('disabled', true).addClass('hide').after($spinner);
         }, 500);
+        console.log("      done with before submit!");
       };
 
       this.success = function(data) {
+        console.log(" ---> in success function");
         if (data.thumb) {
           // TODO : extract this selector out
           $('span.filename').deletePreview('#item_photo, #item_photo_url', 
@@ -52,7 +55,9 @@
     },
 
     submit: function() {
+      console.log(" ---> in submit...");
       if (this.canBeSubmitted()) {
+        console.log(" ---> can be submitted");
         this.$form.ajaxSubmit({
           'iframe': true,
           'data'  : { 'format': 'iframe' },
@@ -62,6 +67,7 @@
           'success': this.success
         });
       }
+      console.log(" ---> finished executing ajax Submit");
     }
   });
 })(jQuery);
