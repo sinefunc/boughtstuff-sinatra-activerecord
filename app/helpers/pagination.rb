@@ -31,7 +31,7 @@ class Main
         if page
           tag('li', link(text, page), :class => classname)
         else
-          tag('li', link(text, '#', :onclick => "return false"), :class => classname + ' disabled')
+          # tag('li', link(text, '#', :onclick => "return false"), :class => classname + ' disabled')
         end
       end
 
