@@ -3,7 +3,7 @@
     %img{ :src => user.avatar_url, :alt => user.name }
   %h2
     %a{ :href => user_url(user) }
-      = truncate(user.name, :length => 27)
+      = truncate(user.name, :length => 20)
   %p
     Has bought
     %strong
