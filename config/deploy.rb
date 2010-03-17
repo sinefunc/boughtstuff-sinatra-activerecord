@@ -42,7 +42,14 @@ namespace :deploy do
       cd #{release_path} && #{ruby_bin}/rake asset:upload:s3
     EOF
   end
+
+  task :symlink_database_yml, :roles => :app do
+    run <<-EOF
+      ln -vfs #{shared_path}/database.yml #{release_path}/config/database.yml
+    EOF
+  end
 end
 
+before "deploy:finalize_update", "deploy:symlink_database_yml"
 before "deploy:finalize_update", "deploy:build_assets"
 after  "deploy:finalize_update", "deploy:upload_assets_to_s3"
