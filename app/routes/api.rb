@@ -3,7 +3,7 @@ class Main
     include Sinatra::Authorization
   end
 
-  post "/api/v1/items" do
+  post "/api/v1/items.json" do
     require_api_user
     
     content_type 'text/plain'
