@@ -1,5 +1,5 @@
 class Main
-  get '/:username/:filter' do |username, filter|
+  get '/:username/:filter/?' do |username, filter|
     if %w(items most-viewed liked friends-items).include?(filter)
       unless username == AnonymousUser::USERNAME
         @account = User.find_by_username( username )
@@ -15,7 +15,17 @@ class Main
     redirect('/everyone/items')
   end
   
-  get '/:username/items' do
+  get '/:username/?' do |username|
+    if @account = User.find_by_username( username )
+      @items = @account.items.latest.paginate(page: params[:page])
+
+      haml :'items/index'
+    else
+      pass
+    end
+  end
+
+  get '/:username/items/?' do
     @items = @account.items.latest.paginate(page: params[:page])
 
     haml :'items/index'
