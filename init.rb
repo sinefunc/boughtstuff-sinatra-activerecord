@@ -12,6 +12,8 @@ require 'active_support'
 require 'active_record'
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
+require 'lilypad'
+
 begin
   require 'mysql'
 rescue LoadError
@@ -28,9 +30,18 @@ class Main < Monk::Glue
 
   use     Rack::Session::Cookie, settings(:session)
   use     Twitter::Login, settings(:twitter)
+  use     Rack::Lilypad do
+    api_key "cc8aa796ba335d9f24549349214a6c32"
+    sinatra
+  end
+  
+  class << logger; alias :write :info; end
+  use     Rack::CommonLogger, logger
+
   helpers Twitter::Login::Helpers
   helpers WillPaginate::ViewHelpers::Base
-  
+ 
+
   configure :development do
     enable :show_exceptions
     enable :reload_templates
