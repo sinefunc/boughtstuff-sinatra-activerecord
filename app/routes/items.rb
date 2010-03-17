@@ -20,6 +20,12 @@ class Main
 
     haml :'items/index'
   end
+  
+  get '/:username/tagged/:tag' do
+    @items = @account.items.tagged(params[:tag]).paginate(:page => params[:page])
+
+    haml :'items/index'
+  end
 
   get "/:username/most-viewed" do
     @items = @account.items.most_viewed.paginate(page: params[:page])
