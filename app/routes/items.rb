@@ -85,14 +85,14 @@ class Main
     end
   end
   
-  delete "/item/:id" do |id|
+  delete "/:username/:id" do |username, id|
     login_required
     
     content_type 'text/plain'
     
     @item = current_user.items.find(id)
     @item.destroy
-   
+    
     { :location => user_url(@item.user) }.to_json
   end
 end

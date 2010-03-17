@@ -18,6 +18,11 @@ class TwitterProxy
 
   private
     def request( request_method, path, *arguments )
+      if RACK_ENV == 'development' 
+        logger.info "TwitterProxy #{request_method} #{path}, #{arguments.inspect}"
+        return {}
+      end
+
       response = client.send request_method, append_extension_to(path), *arguments 
       handle_response(response)
     end
