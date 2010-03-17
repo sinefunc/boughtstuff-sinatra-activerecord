@@ -38,18 +38,16 @@
                           %a.like-link{ :href => likes_path(:item_id => item.id) }
                             Like
                     
-                    - unless self?(item.user)
-                      %li.reply-item
-                        %a{ :href => new_reply_path(:item_id => item) }
-                          Reply
+                    %li.reply-item
+                      %a{ :href => new_reply_path(:item_id => item) }
+                        Reply
                     %li.dm-item.hide
                       %a{ :href => "#" }
                         DM
 
-                    - unless self?(item.user)
-                      %li.rt-item
-                        %a{ :href => retweets_path(:item_id => item) }
-                          RT
+                    %li.rt-item
+                      %a{ :href => retweets_path(:item_id => item) }
+                        RT
 
                     - if self?(item.user)
                       %li.delete-item
