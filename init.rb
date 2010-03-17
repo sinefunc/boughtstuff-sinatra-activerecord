@@ -34,6 +34,9 @@ class Main < Monk::Glue
     api_key "cc8aa796ba335d9f24549349214a6c32"
     sinatra
   end
+  
+  class << logger; alias :write :info; end
+  use     Rack::CommonLogger, logger
 
   helpers Twitter::Login::Helpers
   helpers WillPaginate::ViewHelpers::Base
