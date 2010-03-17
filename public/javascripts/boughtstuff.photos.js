@@ -23,21 +23,14 @@
       };
 
       this.beforeSubmit = function() {
-        console.log(" ---> in before submit...");
         window.setTimeout(function() {
           $base.attr('disabled', true).addClass('hide').after($spinner);
         }, 500);
-        console.log("      done with before submit!");
       };
 
       this.success = function(data) {
-        console.log(" ---> in success function");
-        console.log(data); 
         var responseText = $(data).text();
-        console.log(responseText);
-        console.log(typeof responseText);
         var data = JSON.parse(responseText);
-        console.log(data);
 
         if (data.thumb) {
           // TODO : extract this selector out
@@ -62,9 +55,7 @@
     },
 
     submit: function() {
-      console.log(" ---> in submit...");
       if (this.canBeSubmitted()) {
-        console.log(" ---> can be submitted");
         this.$form.ajaxSubmit({
           'iframe': true,
           'url': '/uploader',
@@ -72,7 +63,6 @@
           'success': this.success
         });
       }
-      console.log(" ---> finished executing ajax Submit");
     }
   });
 })(jQuery);
