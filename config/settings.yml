@@ -2,7 +2,7 @@ defaults: &defaults
   :log_level: warn
   :asset_host: "http://boughtstuff.local:3000"
   :session:
-    :key: "_boughtstuff_session"
+    :key: "rack.session"
   
   :photos:
     :storage:   :file
@@ -11,8 +11,8 @@ defaults: &defaults
     :cache_dir: ':root/tmp/uploads'
 
   :twitter:
-    :consumer_key: "2YTK8XIszlR12aVju0tA"
-    :secret:       "lcO2ulMC2dhAS1dvEQz7qT4fCsMFKDrqpF9BSyw2A8"
+    :consumer_key: "45Hgz2NJRhHOH2uSmhfyhg"
+    :secret:       "PrMnB5WNnmXwAjw3UtlvnGYESeiXlBkA5hhw0PFi4Lo"
     :return_to:    "/authenticated"
 
 :development:
@@ -26,8 +26,7 @@ defaults: &defaults
 :production:
   <<: *defaults
   :log_level: debug
-  # :asset_host: "http://d20r1yy71waydm.cloudfront.net"
-  :asset_host: "http://s3.amazonaws.com/assets.boughtstuff.com"
+  :asset_host: "http://d20r1yy71waydm.cloudfront.net"
   :photos:
     :storage: :s3
     :root:      ':root/public'
