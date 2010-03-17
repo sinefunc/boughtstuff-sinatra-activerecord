@@ -3,8 +3,12 @@ class Main
     if twitter_user
       self.current_user = 
         User.find_or_create_by(twitter_user, session[:access_token])
-      
-      redirect user_url(current_user)
+
+      if session[:return_to]
+        redirect session.delete(:return_to)
+      else     
+        redirect user_url(current_user)
+      end
     else
       redirect root_url
     end

@@ -1,7 +1,8 @@
 class Main
   helpers do
-    def login_required( redirect_to = '/' )
+    def login_required( redirect_to = '/login' )
       unless logged_in?
+        session[:return_to] = request.fullpath
         redirect redirect_to
       end
     end
