@@ -1,6 +1,6 @@
 defaults: &defaults
   :log_level: warn
-  :asset_host: "http://boughtstuff.local:3000"
+  :asset_host: "http://boughtstuff.local:4567"
   :session:
     :key: "_boughtstuff_session"
   
