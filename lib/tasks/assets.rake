@@ -6,6 +6,8 @@ namespace :asset do
   namespace :upload do
     desc "Upload all assets to assets.boughtstuff.com"
     task :s3 => :environment do
+      require 'aws/s3'
+
       config = YAML.load_file('config/settings.yml')[RACK_ENV.to_sym][:photos]
 
       files = [ "public/stylesheets/*_packaged.css",
