@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100310091736) do
+ActiveRecord::Schema.define(:version => 20100317130019) do
 
   create_table "items", :force => true do |t|
     t.integer  "user_id"
@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(:version => 20100310091736) do
     t.datetime "photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "likes_count",           :default => 0
-    t.integer  "views_count",           :default => 0
-    t.integer  "src_twitter_status_id"
+    t.integer  "likes_count",                         :default => 0
+    t.integer  "views_count",                         :default => 0
+    t.string   "src_twitter_status_id", :limit => 20
   end
 
-  add_index "items", ["src_twitter_status_id"], :name => "index_items_on_src_twitter_status_id"
+  add_index "items", ["src_twitter_status_id"], :name => "index_items_on_src_twitter_status_id", :unique => true
   add_index "items", ["views_count"], :name => "index_items_on_views_count"
 
   create_table "likes", :force => true do |t|
