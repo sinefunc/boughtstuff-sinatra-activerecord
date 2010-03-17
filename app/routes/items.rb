@@ -12,7 +12,7 @@ class Main
   end
 
   get '/' do
-    haml :'home'
+    redirect('/everyone/items')
   end
   
   get '/:username/items' do
