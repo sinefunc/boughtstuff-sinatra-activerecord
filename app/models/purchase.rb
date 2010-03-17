@@ -1,5 +1,5 @@
 class Purchase
   include StatusUpdateConcerns
 
-  template "just bought %.63s :url #boughtstuff"
+  template "just bought %.64s :url #boughtstuff"
 end

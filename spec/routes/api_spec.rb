@@ -9,7 +9,7 @@ describe "POST /api/v1/items" do
 
   context "when not authorized" do
     before( :each ) do
-      post "/api/v1/items"    
+      post "/api/v1/items.json"    
     end
     
     it { last_response.body.should == "Authorization Required" }
@@ -22,7 +22,7 @@ describe "POST /api/v1/items" do
 
     context "when no user login given" do 
       before( :each ) do
-        post "/api/v1/items"    
+        post "/api/v1/items.json"    
       end
 
       it do
@@ -33,7 +33,7 @@ describe "POST /api/v1/items" do
     context "when a valid user login is given but invalid item params" do
       before(:each) do
         @user = Factory(:user)
-        post "/api/v1/items", :login => @user.login
+        post "/api/v1/items.json", :login => @user.login
       end
 
       it { last_response.status.should == 200 } 
@@ -51,7 +51,7 @@ describe "POST /api/v1/items" do
           :body => File.read(root_path('spec/fixtures/files/avatar.jpg'))
         )
 
-        post "/api/v1/items", :login => @user.login, 
+        post "/api/v1/items.json", :login => @user.login, 
           :item => Factory.attributes_for(:item_with_photo_url)
       end
 

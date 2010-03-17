@@ -19,7 +19,7 @@ describe Purchase, "with an item name of 140 A's and an ID of 1001" do
   it { should be_valid }
 
   its(:body) { 
-    should == "just bought #{'A' * 63} http://marcopalinar.boughtstuff.com/#1001 #boughtstuff" 
+    should == "just bought #{'A' * 64} http://boughtstuff.com/marcopalinar#1001 #boughtstuff" 
   }
 
   its(:body) {
@@ -40,7 +40,7 @@ describe Purchase, "with an item name of iPod Touch and an ID of 1001" do
   it { should be_valid }
 
   its(:body) { 
-    should == "just bought iPod Touch http://marcopalinar.boughtstuff.com/#1001 #boughtstuff" 
+    should == "just bought iPod Touch http://boughtstuff.com/marcopalinar#1001 #boughtstuff" 
   }
 end
 

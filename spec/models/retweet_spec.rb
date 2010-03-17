@@ -20,7 +20,7 @@ describe Retweet, "with an item name of 140 A's and an ID of 1001" do
   it { should be_valid }
 
   its(:body) {
-    should == "RT @marcopalinar: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA http://marcopalinar.boughtstuff.com/#1001 #boughtstuff"
+    should == "RT @marcopalinar: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA http://boughtstuff.com/marcopalinar#1001 #boughtstuff"
   }
 end
 
