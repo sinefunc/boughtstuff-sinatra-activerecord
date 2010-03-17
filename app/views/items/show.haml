@@ -57,9 +57,9 @@
           %a.contact-avatar{ :href => user_url(@item.user) }
             = user_avatar(@item.user)
   .colR.col11-4.item-blurb
-    - if @item.body?
+    - if @item.description?
       %p
-        = @item.body      
+        = @item.description      
     - else
       %p
         %em

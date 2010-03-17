@@ -58,7 +58,7 @@ class Main
   post "/items" do
     login_required
     
-    content_type 'text/json'
+    content_type 'text/plain'
     
     @item = current_user.items.build(params[:item])
     
@@ -72,7 +72,7 @@ class Main
   delete "/item/:id" do |id|
     login_required
     
-    content_type 'text/json'
+    content_type 'text/plain'
     
     @item = current_user.items.find(id)
     @item.destroy

@@ -4,6 +4,6 @@ class ItemUrl < Struct.new(:username, :item_id)
   end
 
   def to_s
-    "http://#{username}.boughtstuff.com/##{item_id}"
+    "http://boughtstuff.com/#{username}##{item_id}"
   end
 end
