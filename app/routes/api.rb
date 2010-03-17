@@ -6,7 +6,7 @@ class Main
   post "/api/v1/items" do
     require_api_user
     
-    content_type 'text/json'
+    content_type 'text/plain'
     
     begin
       @user = User.find_by_login!( params[:login] )
