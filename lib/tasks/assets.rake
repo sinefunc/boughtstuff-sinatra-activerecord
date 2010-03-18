@@ -9,6 +9,9 @@ namespace :asset do
       require 'aws/s3'
 
       config = YAML.load_file('config/settings.yml')[RACK_ENV.to_sym][:photos]
+      
+      timestamp = Time.now.utc.strftime('%Y%m%d%H%M%S')
+      File.open('config/deployed_at', 'w') { |f| f.write timestamp }
 
       files = [ "public/stylesheets/*_packaged.css",
         "public/javascripts/*_packaged.js",
@@ -25,7 +28,7 @@ namespace :asset do
 
       files.each do |f|
         next if File.directory?(f)
-        key = f.gsub(/public\//, '')
+        key = [ timestamp, f.gsub(/public\//, '') ].join('/')
         puts "putting #{f} into S3 as #{key}"
 
         AWS::S3::S3Object.store(
