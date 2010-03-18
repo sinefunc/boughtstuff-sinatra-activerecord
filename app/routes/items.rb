@@ -84,6 +84,7 @@ class Main
     if @item.save
       { location: user_url(@item.user) }.to_json
     else
+      logger.info @item.errors.full_messages
       @item.errors.to_json
     end
   end

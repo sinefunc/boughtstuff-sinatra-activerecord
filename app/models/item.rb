@@ -16,6 +16,8 @@ class Item < ActiveRecord::Base
   
   validates :src_twitter_status_id,
     :uniqueness =>   { :allow_blank => true }
+  
+  validate  :when_was_parsed_correctly
 
   scope :latest,      order('id DESC')
   scope :most_viewed, order('views_count DESC')
@@ -57,12 +59,10 @@ class Item < ActiveRecord::Base
     when Date, Time 
       write_attribute(:when, date_time_or_string)
     when String     
-      write_attribute(
-        :when, 
-        Chronic.parse(
-          date_time_or_string, :now => Time.now.utc
-        ).try(:to_date)
-      )
+      @when = date_time_or_string
+      
+      write_attribute :when, 
+        Chronic.parse(date_time_or_string, :now => Time.now.utc).try(:to_date)
     end
   end
 
@@ -90,6 +90,12 @@ class Item < ActiveRecord::Base
         return false
       else
         return true
+      end
+    end
+
+    def when_was_parsed_correctly
+      if @when.present? and read_attribute(:when).blank?
+        errors.add(:when, I18n::t('errors.messages.invalid'))
       end
     end
 end

@@ -159,3 +159,29 @@ describe Item, "with a src twitter status id that doesn't exist yet" do
     end
   end
 end
+
+describe Item, "with an unparseable date like 'Last Foobar'" do
+  subject do
+    @item = Item.new(:when => "Last FooBar")
+  end
+  
+  it { should_not be_valid }
+
+  it do
+    subject.valid?
+    subject.errors[:when].should_not be_empty
+  end
+end
+
+describe Item, "with no date given" do
+  subject do
+    @item = Item.new(:when => "")
+  end
+  
+  it { should_not be_valid }
+
+  it do
+    subject.valid?
+    subject.errors[:when].should be_empty
+  end
+end
