@@ -32,6 +32,9 @@
         'type':     'POST',
         'success':  function(data) {
           $.ubox($this.attr('href'));
+          setTimeout(function() { 
+            $('#ubox-container, #ubox-screen').fadeOut(); 
+          }, 5000);
         }
       });
 

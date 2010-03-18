@@ -21,6 +21,9 @@
               window.location.href = data.location;
             } else {
               $('.initial, .success', '#ubox-container').toggleClass('hide');
+              setTimeout(function() { 
+                $('#ubox-container, #ubox-screen').fadeOut();
+              }, 5000);
             }
           } else {
             $button.removeClass('hide');
