@@ -97,7 +97,13 @@ class Twitter::Login
     authorize_from_request(request)
     
     # get and store authenticated user's info from Twitter
-    request.session[:twitter_user] = twitter.verify_credentials.to_hash
+    user = twitter.verify_credentials.to_hash
+    request.session[:twitter_user] = {
+      screen_name: user['screen_name'],
+      name: user['name'],
+      id: user['id'],
+      profile_image_id: user['profile_image_id']
+    }
     
     # pass the request down to the main app
     response = begin
