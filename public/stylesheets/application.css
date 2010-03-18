@@ -1,5 +1,19 @@
+/*Image Preloading*/
+
+html{background:url(../images/view-icn.png) -9999px -9999px no-repeat;}
+html{background:url(../images/like-icn.png) -9999px -9999px no-repeat;}
+html{background:url(../images/dm-icn.png) -9999px -9999px no-repeat;}
+html{background:url(../images/rt-icn.png) -9999px -9999px no-repeat;}
+html{background:url(../images/delete-icn.png) -9999px -9999px no-repeat;}
+html{background:url(../images/reply-icn.png) -9999px -9999px no-repeat;}
+html{background:url(../images/shine.png) -9999px -9999px no-repeat;}
+html{background:url(../images/body-bg.jpg) -9999px -9999px no-repeat;}
+html{background:none;}
+
+/*Main Styles*/
+
 html {min-height: 100%; height: 100%; padding-top: 11px; background: url(../images/top-ornament.png) repeat-x;}
-body{background: url(../images/body-bg.jpg) 10% 65% repeat;color:#333; font-size: 12px; line-height: normal; min-height: 100%;  padding-bottom: 80px; font-family: "Lucida Grande","Lucida Sans Unicode", helvetica, verdana, arial, sans-serif;}
+body{background: url(../images/body-bg.jpg) 10% 65% repeat;color:#333; font-size: 12px; line-height: normal; min-height: 100%;  padding-bottom: 120px; font-family: "Lucida Grande","Lucida Sans Unicode", helvetica, verdana, arial, sans-serif;}
 abbr {cursor: default;}
 .top-panel {background: #F5FAFA url(../images/top-panel-bg.png) repeat-x; padding-bottom: 30px;}
 .boughtstuff-main {background:url(../images/boughtstuff-form-bg.png) 0 100% no-repeat; height: 235px; padding: 18px 4px 0 4px;}
@@ -134,7 +148,7 @@ span.tool-tip a {color: #FFF;-moz-border-radius:3px;-webkit-border-radius:3px;bo
 .single-item-card .item-preview .item-details {position: absolute; bottom: 42px; left: 50%; margin-left: -80px;}
 .single-item-card .item-preview .item-meta { padding:10px; background: url(../images/meta-bg.png) repeat; }
 .single-item-card .item-preview .contact-avatar {display: inline-block; margin-bottom: 5px; margin-left: 5px;}
-.single-item-card .item-preview .contact-avatar img {border: 1px solid #FFF;}
+.single-item-card .item-preview .contact-avatar img {border: 1px solid #FFF; width: 100;}
 .single-item-card .item-actions {margin: 3px 0 0 0 !important;}
 .single-item-card .item-actions a {color: #CCC; font-size: 10px; text-transform: uppercase; text-decoration: none;}
 .single-item-card .item-actions:hover a {color: #DDD;}
@@ -172,3 +186,9 @@ span.tool-tip a {color: #FFF;-moz-border-radius:3px;-webkit-border-radius:3px;bo
 .reply-wrapper input.button {font-size: 14px; }
 .reply-wrapper .submit-buttons {margin-bottom: 10px;}
 .reply-wrapper h1.success {background: #333 url(../images/success.png) 10px 10px no-repeat; padding-left: 30px;}
+
+.footer {background: #1D1D1D; position: absolute; bottom: 0;width: 100%;}
+.footer .footer-wrap {padding: 10px; color: #FFF;}
+.footer .sinefunc-brand {margin-right: 10px !important;}
+.footer .sinefunc-brand a {padding-top: 36px; background: url(../images/sinefunc-brand.png) no-repeat; width: 176px; margin-bottom: 10px;}
+.footer .copyright {line-height: 36px;}
