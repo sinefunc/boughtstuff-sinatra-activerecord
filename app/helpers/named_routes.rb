@@ -5,7 +5,7 @@ class Main
     end
     
     def user_url( user )
-      '/%s/items' % user.username
+      '/%s' % user.username
     end
 
     def new_item_path
@@ -13,7 +13,7 @@ class Main
     end
 
     def everyones_items_url
-      '/%s/items' % AnonymousUser::USERNAME
+      '/%s' % AnonymousUser::USERNAME
     end
 
     def item_path( item )

@@ -18,7 +18,7 @@ class TwitterProxy
 
   private
     def request( request_method, path, *arguments )
-      if RACK_ENV == 'development' 
+      if RACK_ENV == 'development' and request_method != :get
         logger.info "TwitterProxy #{request_method} #{path}, #{arguments.inspect}"
         return {}
       end

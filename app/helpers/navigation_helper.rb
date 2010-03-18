@@ -21,9 +21,11 @@ class Main
         link_to(text, url_options), 
         options
     end
-
+    
     def show_toggling
-      yield if inside?('/items', '/liked')
+      if (@account && user_url(@account) == request.fullpath) or inside?('/liked')
+        yield 
+      end
     end
 
     private
