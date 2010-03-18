@@ -6,14 +6,16 @@
     = form_for @reply, :html => { :action => '/replies', :rel => @reply.class.model_name.underscore, :class => 'remote-form' } do |f|
 
       %label(for='reply_body')
-        %span about #{h(@item.name)} &hellip;
+        %span 
+          Ask something about 
+          %strong
+            #{h(@item.name)} &hellip;
         = f.text_area    :body, :class => 'centerize'
         = f.hidden_field :item_id
       %span.colR.submit-buttons
         %input.button{ :name => "commit", :type => "submit", :value => "Reply" }
 
-  .success.hide
-    %h1 You have successfully sent a reply to #{h(@reply.item.user)}
+  
+  %h1.success.hide You have successfully sent a reply to #{h(@reply.item.user)}
 
-    %a{ :href => '#', :rel => "ubox-close" } Close
   =link_to 'close this', 'javascript:void(0);', :rel=>"ubox-close", :class => "ubox-close"
