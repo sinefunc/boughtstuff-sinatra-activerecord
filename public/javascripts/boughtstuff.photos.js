@@ -1,7 +1,7 @@
 (function($) {
   $.Photo = Base.extend({
     constructor: function(input, options) {
-      var ALLOWED = /\.(jpg|png|gif|bmp)$/i,
+      var ALLOWED = /\.(jpe?g|png|gif|bmp)$/i,
           $base            = $(input),
           $form            = $base.parents('form'),
           $imagePreview    = $('.item-preview .item-link'),
