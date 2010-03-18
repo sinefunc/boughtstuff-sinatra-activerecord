@@ -8,7 +8,7 @@
 
     %meta{ :name => "asset-host", :content => app_config(:asset_host) }
 
-  %body
+  %body{ :class => (logged_in? ? 'logged-in' : 'logged-out') }
     = partial :'shared/toppanel'
     = partial :'shared/usernav'
     

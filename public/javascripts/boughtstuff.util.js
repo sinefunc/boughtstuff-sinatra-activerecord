@@ -1,4 +1,20 @@
 (function($) { 
+  $.isLoggedIn = function() {
+    return $('body').hasClass('logged-in');
+  };
+
+  $.redirectToLogin = function() {
+    window.location.href = '/login';
+  };
+
+  $.authenticated = function( callback ) {
+    if ($.isLoggedIn()) {
+      callback();
+    } else {
+      $.redirectToLogin();
+    }
+  };
+
   $.fn.destroyOnClick = function() {
     $('a[data-method="delete"]').click(function() {
       var csrfParam = $('meta[name=csrf-param]').attr('content'),

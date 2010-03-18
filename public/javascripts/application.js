@@ -20,22 +20,27 @@
     });
 
     $('.reply-item a').click(function() {
-      $.ubox($(this).attr('href'));
+      $.authenticated(function() {
+        $.ubox($(this).attr('href'));
+      });
+
       return false;
     });
 
     $('.rt-item a').click(function() {
       var $this = $(this);
-
-      $.ajax({
-        'url':      $this.attr('href'),
-        'type':     'POST',
-        'success':  function(data) {
-          $.ubox($this.attr('href'));
-          setTimeout(function() { 
-            $('#ubox-container, #ubox-screen').fadeOut(); 
-          }, 5000);
-        }
+      
+      $.authenticated(function() {
+        $.ajax({
+          'url':      $this.attr('href'),
+          'type':     'POST',
+          'success':  function(data) {
+            $.ubox($this.attr('href'));
+            setTimeout(function() { 
+              $('#ubox-container, #ubox-screen').fadeOut(); 
+            }, 5000);
+          }
+        });
       });
 
       return false;
