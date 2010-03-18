@@ -89,20 +89,13 @@ fieldset.boughtstuff-form input.text-input {background: none; padding: 10px; fon
 #shelf .shelf-items .shelf-item:hover .item-actions {background-position: 0 -30px;}
 #shelf .shelf-items .shelf-item:hover .actions-menu {display: block !important;}
 
-.pagination {padding: 8px 10px 0 10px !important; position: relative;}
-.pagination {text-align: center;}
-.pagination .prev-link {background: url(../images/prev-link-bg.png) no-repeat; height: 23px; line-height: 23px; padding-left: 20px; position: absolute; left: 10px; top: 8px;}
-.pagination .prev-link a {font-size: 11px; font-weight: bold; text-transform: uppercase; text-decoration: none; color: #694320; text-shadow: #F9D4A6 0px 1px 0px;}
-.pagination .prev-link:hover {background-position: 0 -23px;}
-.pagination .next-link {background: url(../images/next-link-bg.png) 100% 0 no-repeat; height: 23px; line-height: 23px; padding-right: 20px; position: absolute; right: 10px; top: 8px;}
-.pagination .next-link:hover {background-position: 100% -23px;}
-.pagination .next-link a {font-size: 11px; font-weight: bold; text-transform: uppercase; text-decoration: none; color: #694320; text-shadow: #F9D4A6 0px 1px 0px;}
-.pagination .page-numbers { text-align: center !important; margin-top:3px;}
-.pagination .page-numbers li {display: inline-block;}
-.pagination .page-numbers .ir {padding-top: 17px; background: url(../images/page-bg.png) 0 0 no-repeat; width: 16px; margin: 0px; display: inline-block;}
-.pagination .page-numbers span.ir {background: url(../images/page-current-bg.png) no-repeat !important; width: 9px; margin: 0 3px; display: inline-block; padding-top: 17px; width: 16px; }
-.pagination .page-numbers a.ir:hover {background-position: 0px -17px;}
-
+.pagination {position: absolute; width: 960px; padding: 0; list-style: none; }
+.pagination li {float: left; margin-left: 0px; margin-right: 3px; line-height: 38px; padding: 0;padding-left: 10px; text-align: center;}
+.pagination .prev-link {margin-left: 10px; margin-right: 10px;}
+.pagination .next-link {float: right; margin-right: 10px;}
+.pagination a {font-size: 11px; font-weight: bold; text-transform: uppercase; text-decoration: none; background: #694320; padding: 5px; color: #FFF; border-bottom: 1px solid #DDA46B;}
+.pagination .page-numbers span {font-size: 11px; font-weight: bold; text-transform: uppercase; text-decoration: none; background: #402813; padding: 5px; color: #FFF; border-bottom: 1px solid #DDA46B;}
+.pagination a:hover {background: #885628;}
 .item-form {background: url(../images/create-item-form-bg.png) 0 50% no-repeat; margin-top: 30px; height: 733px; position: relative; }
 .form-head {position: absolute; top: 28px; left: 30px; font-size: 18px; font-weight: normal !important; color: #FFF; font-family: "Lucida Grande","Lucida Sans Unicode", helvetica, verdana, arial;}
 .item-form label {display: block; margin: 0 auto 20px auto; position: relative;}

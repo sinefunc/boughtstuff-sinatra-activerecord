@@ -1,8 +1,6 @@
 .col6-0.reply-wrapper.clearFix
   %h1 Reply to #{h(@reply.item.user)} 
   .initial
-    
-
     = form_for @reply, :html => { :action => '/replies', :rel => @reply.class.model_name.underscore, :class => 'remote-form' } do |f|
 
       %label(for='reply_body')
