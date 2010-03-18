@@ -20,8 +20,10 @@
     });
 
     $('.reply-item a').click(function() {
+      var $this = $(this);
+
       $.authenticated(function() {
-        $.ubox($(this).attr('href'));
+        $.ubox($this.attr('href'));
       });
 
       return false;
