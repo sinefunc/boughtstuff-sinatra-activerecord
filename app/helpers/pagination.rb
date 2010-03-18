@@ -21,9 +21,9 @@ class Main
 
       def page_number(page)
         unless page == current_page
-          tag('li', link(page, page, :rel => rel_value(page), :class => 'ir'))
+          tag('li', link(page, page, :rel => rel_value(page)))
         else
-          tag('li', tag(:span, page, :class => 'ir'))
+          tag('li', tag(:span, page))
         end
       end
 
@@ -31,7 +31,7 @@ class Main
         if page
           tag('li', link(text, page), :class => classname)
         else
-          # tag('li', link(text, '#', :onclick => "return false"), :class => classname + ' disabled')
+          tag('li', link(text, '#', :onclick => "return false"), :class => classname + ' disabled')
         end
       end
 

@@ -17,7 +17,7 @@ class Main
     end
 
     def not_viewing_own_account
-      yield if @account != current_user
+      yield if @account != current_user or @item
     end
   end
 end

@@ -13,6 +13,7 @@ require 'active_record'
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 require 'lilypad'
+require 'bebop'
 
 begin
   require 'mysql'
@@ -27,21 +28,23 @@ Dir[ root_path('config', 'initializers', '*.rb') ].each { |f| require f }
 class Main < Monk::Glue
   enable :sessions
   set    :app_file, __FILE__
+  
+  register Bebop
 
-  use     Rack::Session::Cookie, settings(:session)
-  use     Twitter::Login, settings(:twitter)
-  use     Rack::Lilypad do
+  use Rack::Session::Cookie, settings(:session)
+  use Twitter::Login, settings(:twitter)
+  use Rack::Lilypad do
     api_key "cc8aa796ba335d9f24549349214a6c32"
     sinatra
   end
+
   
   class << logger; alias :write :info; end
-  use     Rack::CommonLogger, logger
+  use Rack::CommonLogger, logger
 
   helpers Twitter::Login::Helpers
   helpers WillPaginate::ViewHelpers::Base
  
-
   configure :development do
     enable :show_exceptions
     enable :reload_templates
