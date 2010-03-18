@@ -31,8 +31,9 @@ class Main
     haml :'items/index'
   end
   
-  get '/:username/tagged/:tag' do
-    @items = @account.items.tagged(params[:tag]).paginate(:page => params[:page])
+  get '/:username/tagged/:tag' do |username, tag|
+    @account = User.find_by_username( username )
+    @items   = @account.items.tagged(tag).paginate(:page => params[:page])
 
     haml :'items/index'
   end
