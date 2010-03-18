@@ -18,7 +18,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "/photos/#{version_name}/missing.jpg"
+    "photos/#{version_name}/missing.jpg"
   end
 
   def url( *args )

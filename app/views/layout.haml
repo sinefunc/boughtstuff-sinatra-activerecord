@@ -6,7 +6,7 @@
     
     = stylesheet_link_merged :base
 
-    %meta{ :name => "asset-host", :content => app_config(:asset_host) }
+    %meta{ :name => "asset-host", :content => asset_host_with_prefix }
 
   %body{ :class => (logged_in? ? 'logged-in' : 'logged-out') }
     = partial :'shared/toppanel'

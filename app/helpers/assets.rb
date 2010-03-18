@@ -5,11 +5,12 @@ class Main
 
       src = 
         if path.index('/') == 0
-          "#{app_config(:asset_host)}#{path}"
+          [ app_config(:asset_host), path ].join
         elsif path.index('http') == 0
           path
         else
-          "#{app_config(:asset_host)}/images/#{path}"
+          [ app_config(:asset_host), assets_path_prefix, 
+            'images', path ].join('/')
         end
 
       %(<img src="#{src}" #{tag_options(options)} />)
@@ -38,25 +39,37 @@ class Main
         stylesheet_link_tag([ group, 'packaged' ].join('_'))
       end
     end
+    
+    def assets_path_prefix
+      begin
+        File.read(root_path('config', 'deployed_at')).strip
+      rescue
+        nil
+      end
+    end
+
+    def asset_host_with_prefix
+      [ app_config(:asset_host), assets_path_prefix ].compact.join('/')
+    end
 
     private
       def stylesheet_link_tag( stylesheet )
-        t = File.mtime(root_path('public', 'stylesheets', "#{stylesheet}.css"))
+        mtime = File.mtime(root_path('public', 'stylesheets', "#{stylesheet}.css"))
 
         sprintf(
           '<link href="%s.css?%s" type="text/css" rel="stylesheet" />',
-          [app_config(:asset_host), 'stylesheets', stylesheet].join('/'),
-          t.to_i
+          [asset_host_with_prefix, 'stylesheets', stylesheet].compact.join('/'),
+          mtime.to_i
         )
       end
 
       def javascript_include_tag( javascript )
-        t = File.mtime(root_path('public', 'javascripts', "#{javascript}.js"))
+        mtime = File.mtime(root_path('public', 'javascripts', "#{javascript}.js"))
 
         sprintf(
           '<script src="%s.js?%s" type="text/javascript"></script>',
-          [app_config(:asset_host), 'javascripts', javascript].join('/'),
-          t.to_i
+          [ asset_host_with_prefix, 'javascripts', javascript].compact.join('/'),
+          mtime.to_i
         )
       end
 
