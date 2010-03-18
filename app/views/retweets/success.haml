@@ -1,3 +1,4 @@
-%h1 You have successfully retweeted the item #{h(@item.name)}
+.col6-0.reply-wrapper.clearFix
+  %h1.success You have successfully retweeted the item &quot;#{h(@item.name)}&quot; !
 
-%a{ :href => '#', :rel => "ubox-close" } Close
+  =link_to 'close this', 'javascript:void(0);', :rel=>"ubox-close", :class => "ubox-close"

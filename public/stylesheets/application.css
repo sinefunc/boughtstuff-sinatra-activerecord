@@ -171,3 +171,11 @@ span.tool-tip a {color: #FFF;-moz-border-radius:3px;-webkit-border-radius:3px;bo
 .single-item-card .tag-list a:hover { color: #FFF; background: #333;}
 
 #item-image {display: none;}
+.reply-wrapper h1 {font-size: 14px; background: #333; color: #FFF; margin: -10px 0 0 0; padding: 10px; border-bottom: 1px solid #000;}
+.reply-wrapper {background: #CCC; margin: 0 -10px -10px -10px; }
+.reply-wrapper .initial {padding-top: 10px; border-top: 1px solid #FFF; padding: 0 10px 10px 10px;}
+.reply-wrapper label span {display: block !important; font-style: italic; font-size: 11px; margin: 10px 0 3px 0;}
+.reply-wrapper textarea {background: #FFF url(../images/text-input-bg.png) repeat-x; border: 1px solid #DCE4E5; border-top: 0; font-size: 14px; padding: 5px; color: #666; height: 100px; width: 301px; display: block; margin-bottom: 10px;}
+.reply-wrapper input.button {font-size: 14px; }
+.reply-wrapper .submit-buttons {margin-bottom: 10px;}
+.reply-wrapper h1.success {background: #333 url(../images/success.png) 10px 10px no-repeat; padding-left: 30px;}
