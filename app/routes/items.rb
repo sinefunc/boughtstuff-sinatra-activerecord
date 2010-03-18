@@ -64,7 +64,10 @@ class Main
   end
  
   get "/:username/:id" do |username, id|
-    @account = User.find_by_username(username)
+    unless @account = User.find_by_username(username)
+      pass
+    end
+
     @item    = @account.items.find(id)
     @item.viewed!
       
