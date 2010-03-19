@@ -36,7 +36,7 @@ module StatusUpdateConcerns
   end
 
   def save
-    if valid? && (self.id = TwitterStatusUpdate.create(:sender => sender, :body => body))
+    if valid? && (self.id = TwitterStatusUpdate.create(:sender => sender, :body => body, :in_reply_to_status_id => @item.twitter_status_id))
       return true
     else
       return false
