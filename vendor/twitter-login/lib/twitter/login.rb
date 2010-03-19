@@ -102,7 +102,8 @@ class Twitter::Login
       screen_name: user['screen_name'],
       name: user['name'],
       id: user['id'],
-      profile_image_id: user['profile_image_id']
+      profile_image_id: user['profile_image_id'],
+      profile_image_url: user['profile_image_url']
     }
     
     # pass the request down to the main app
