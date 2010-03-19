@@ -26,12 +26,13 @@ defaults: &defaults
 :production:
   <<: *defaults
   :log_level: debug
-  :asset_host: "http://d20r1yy71waydm.cloudfront.net"
+  :asset_host: "http://assets.boughtstuff.com"
   :photos:
     :storage: :s3
     :root:      ':root/public'
     :store_dir: 'uploads'
     :cache_dir: ':root/tmp/uploads'
+    :s3_cnamed: true
     :s3_bucket: 'assets.boughtstuff.com'
     :s3_access_key_id: "1K4Y2FT2FFD0WYZJYT02"
     :s3_secret_access_key: "qWCV1IOH/BkkqyrSMuL86/gzbnsC55QxAhy18uD/"
