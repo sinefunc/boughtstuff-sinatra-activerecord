@@ -14,6 +14,7 @@ require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 require 'lilypad'
 require 'bebop'
+require 'resque'
 
 begin
   require 'mysql'

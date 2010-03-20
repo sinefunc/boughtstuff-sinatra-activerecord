@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'resque'
 
 describe Item do
   it { should validate_presence_of(:name) }
@@ -109,6 +110,7 @@ end
 
 describe Item, "#broadcast_to_twitter" do
   before(:each) do
+    Resque.stub!(:enqueue)
     FakeWeb.register_uri(:post, "http://twitter.com/statuses/update.json",
                          :body => {:id => 123145}.to_json)
     @item = Factory(:item, :user => Factory(:user))
@@ -116,10 +118,9 @@ describe Item, "#broadcast_to_twitter" do
 
   describe "on success" do
     it "saves the twitter status id to the item" do
+      Resque.should_receive(:enqueue).with(Purchase, @item.id, @item.user_id)
       @item.twitter_status_id = nil
-      lambda {
-        @item.broadcast_to_twitter
-      }.should change(@item, :twitter_status_id).to("123145")
+      @item.broadcast_to_twitter
     end
   end
 

@@ -51,7 +51,8 @@ class Item < ActiveRecord::Base
   end
 
   def broadcast_to_twitter
-    update_attribute(:twitter_status_id, Purchase.post(self, user))
+    Resque.enqueue(Purchase, self.id, user_id)
+    # update_attribute(:twitter_status_id, Purchase.post(self, user))
   end
   
   def when=( date_time_or_string )
