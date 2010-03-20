@@ -5,12 +5,12 @@ class Main
 
       src = 
         if path.index('/') == 0
-          [ app_config(:asset_host), path ].join
+          asset_host_join( path )
+          # [ app_config(:asset_host), path ].join
         elsif path.index('http') == 0
           path
         else
-          [ app_config(:asset_host), assets_path_prefix, 
-            'images', path ].join('/')
+          asset_host_join( assets_path_prefix, 'images', path )
         end
 
       %(<img src="#{src}" #{tag_options(options)} />)
@@ -58,7 +58,7 @@ class Main
 
         sprintf(
           '<link href="%s.css?%s" type="text/css" rel="stylesheet" />',
-          [asset_host_with_prefix, 'stylesheets', stylesheet].compact.join('/'),
+          asset_host_join( assets_path_prefix, 'stylesheets', stylesheet ),
           mtime.to_i
         )
       end
@@ -68,13 +68,26 @@ class Main
 
         sprintf(
           '<script src="%s.js?%s" type="text/javascript"></script>',
-          [ asset_host_with_prefix, 'javascripts', javascript].compact.join('/'),
+          asset_host_join( assets_path_prefix, 'javascripts', javascript ),
           mtime.to_i
         )
       end
 
       def asset_packages_config
         YAML.load_file(root_path('config', 'asset_packages.yml'))    
+      end
+
+      def asset_host_join(*args)
+        filename = File.join(*(args.compact))
+      
+        asset_host = 
+          if app_config(:asset_host).is_a?(Array)
+            app_config(:asset_host)[filename.hash.abs % app_config(:asset_host).size]
+          else
+            app_config(:asset_host)
+          end
+
+        File.join(asset_host, filename)
       end
   end
 end

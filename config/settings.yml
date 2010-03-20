@@ -26,7 +26,10 @@ defaults: &defaults
 :production:
   <<: *defaults
   :log_level: debug
-  :asset_host: "http://assets.boughtstuff.com"
+  :asset_host: 
+    - "http://assets1.boughtstuff.com"
+    - "http://assets2.boughtstuff.com"
+    - "http://assets3.boughtstuff.com"
   :photos:
     :storage: :s3
     :root:      ':root/public'
