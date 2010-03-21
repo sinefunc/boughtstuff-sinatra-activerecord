@@ -21,6 +21,9 @@ class Main
   end
 
   post '/session/state' do
+    username = URI.parse(request.referer).path.gsub(%r{^/}, '').split('/').first
+    @account = User.find_by_username( username )
+
     haml :'session/state', :layout => false
   end
 end
