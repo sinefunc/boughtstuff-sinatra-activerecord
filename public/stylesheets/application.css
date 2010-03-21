@@ -1,14 +1,13 @@
 /*Image Preloading*/
 
-html{background:url(../images/view-icn.png) -9999px -9999px no-repeat;}
-html{background:url(../images/like-icn.png) -9999px -9999px no-repeat;}
-html{background:url(../images/dm-icn.png) -9999px -9999px no-repeat;}
-html{background:url(../images/rt-icn.png) -9999px -9999px no-repeat;}
-html{background:url(../images/delete-icn.png) -9999px -9999px no-repeat;}
-html{background:url(../images/reply-icn.png) -9999px -9999px no-repeat;}
-html{background:url(../images/shine.png) -9999px -9999px no-repeat;}
-html{background:url(../images/body-bg.jpg) -9999px -9999px no-repeat;}
-html{background:none;}
+body {background:url(../images/view-icn.png) -9999px -9999px no-repeat;}
+body {background:url(../images/like-icn.png) -9999px -9999px no-repeat;}
+body {background:url(../images/dm-icn.png) -9999px -9999px no-repeat;}
+body {background:url(../images/rt-icn.png) -9999px -9999px no-repeat;}
+body {background:url(../images/delete-icn.png) -9999px -9999px no-repeat;}
+body {background:url(../images/reply-icn.png) -9999px -9999px no-repeat;}
+body {background:url(../images/shine.png) -9999px -9999px no-repeat;}
+body {background:url(../images/body-bg.jpg) -9999px -9999px no-repeat;}
 
 /*Main Styles*/
 
