@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(ROOT_DIR + '/vendor/monk-glue/lib')
 require 'monk/glue'
 require 'json'
 require 'haml'
-require 'twitter/login'
+require 'vendor/twitter-login/lib/twitter/login'
 require 'chronic'
 require 'open-uri'
 require 'i18n'
@@ -14,6 +14,7 @@ require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 require 'lilypad'
 require 'bebop'
+require 'resque'
 
 begin
   require 'mysql'

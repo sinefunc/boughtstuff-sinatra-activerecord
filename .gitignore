@@ -14,3 +14,4 @@
 /config/database.yml
 /uploads
 /config/deployed_at
+/dump.rdb

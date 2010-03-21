@@ -4,7 +4,7 @@
     %meta{ :content => "text/html;charset=UTF-8", "http-equiv" => "Content-Type" }
     %meta{ :name => "asset-host", :content => asset_host_with_prefix }
     / [if gte IE 7]<meta http-equiv="X-UA-Compatible" content="IE=7" />    
-    %title= t('site_title')
+    %title= [ t('site_name'), @page_title ].compact.join(' | ')
     
     = stylesheet_link_merged :base
 

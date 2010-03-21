@@ -51,7 +51,8 @@ class Item < ActiveRecord::Base
   end
 
   def broadcast_to_twitter
-    update_attribute(:twitter_status_id, Purchase.post(self, user))
+    Resque.enqueue(Purchase, self.id, user_id)
+    # update_attribute(:twitter_status_id, Purchase.post(self, user))
   end
   
   def when=( date_time_or_string )
@@ -63,6 +64,10 @@ class Item < ActiveRecord::Base
       
       write_attribute :when, 
         Chronic.parse(date_time_or_string, :now => Time.now.utc).try(:to_date)
+
+      unless read_attribute(:when)
+        write_attribute :when, (Date.parse(date_time_or_string) rescue nil)
+      end
     end
   end
 

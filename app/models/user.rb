@@ -2,8 +2,6 @@ class User < ActiveRecord::Base
   validates :login, :uniqueness => true, :presence => true
   validates :twitter_id, :uniqueness => true, :presence => true
   
-  has_many :tempitems, :dependent => :destroy
-
   has_many :items, :dependent => :destroy
   has_many :likes, :dependent => :destroy, :foreign_key => 'liker_id'
   has_many :likes_items, :through => :likes, :source => :item
