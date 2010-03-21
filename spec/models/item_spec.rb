@@ -161,6 +161,16 @@ describe Item, "with a src twitter status id that doesn't exist yet" do
   end
 end
 
+describe Item, "with a date like Nov 28, 2009" do
+  subject do
+    @item = Item.new(:when => "Nov 28, 2009")
+    @item.valid?
+    @item
+  end
+
+  its(:when) { should == Date.new(2009, 11, 28) }
+end
+
 describe Item, "with an unparseable date like 'Last Foobar'" do
   subject do
     @item = Item.new(:when => "Last FooBar")

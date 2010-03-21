@@ -64,6 +64,10 @@ class Item < ActiveRecord::Base
       
       write_attribute :when, 
         Chronic.parse(date_time_or_string, :now => Time.now.utc).try(:to_date)
+
+      unless read_attribute(:when)
+        write_attribute :when, (Date.parse(date_time_or_string) rescue nil)
+      end
     end
   end
 
