@@ -11,13 +11,30 @@ class TwitterStatusUpdate
 
   validates :sender, :presence => true
   
+  @queue = :twitter
+
+  def self.perform( attrs = {} )
+    status_update = new( attrs )
+    status_update.save
+  end
+
   def self.create( attrs = {} )
-    status_update = new( attrs )  
-    status_update.save ? status_update.id : nil
+    if sender = attrs.delete(:sender)
+      attrs[:sender_id] = sender.id
+    end
+
+    Resque.enqueue( self, attrs )
+    'deferred'
+    # status_update = new( attrs )  
+    # status_update.save ? status_update.id : nil
   end
 
   def initialize(attributes = {})
     attributes.each { |k,v| self.send "#{k}=", v }
+  end
+  
+  def sender_id=( sender_id )
+    self.sender = User.find( sender_id )
   end
 
   def to_model

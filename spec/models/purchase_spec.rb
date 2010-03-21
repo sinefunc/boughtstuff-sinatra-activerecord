@@ -44,26 +44,6 @@ describe Purchase, "with an item name of iPod Touch and an ID of 1001" do
   }
 end
 
-describe Purchase, "#post" do
-  before(:each) do
-    FakeWeb.register_uri(:post, "http://twitter.com/statuses/update.json",
-                         :body => {:id => 123145}.to_json)
-  end
-
-  subject do
-    item = Factory.build(:item, :name => 'iPod Touch',
-                         :user => Factory(:user, :login => 'marcopalinar'))
-    item.id = 1001
-    item.save!
-
-    Purchase.post(item, item.user)
-  end
-  
-  it "should return the twitter status id" do 
-    should == '123145'
-  end
-end
-
 describe Purchase, "with an Item of 140 chars by abcdefghijklmno with 10 digits" do
   subject do
     item = Factory.build(:item, :name => ('A' * 140),
