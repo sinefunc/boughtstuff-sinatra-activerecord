@@ -49,7 +49,7 @@ class Main
     end
 
     def asset_host_with_prefix
-      [ app_config(:asset_host), assets_path_prefix ].compact.join('/')
+      [ Array(app_config(:asset_host)).first, assets_path_prefix ].compact.join('/')
     end
 
     private

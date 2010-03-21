@@ -45,8 +45,8 @@ class Main
     end
 
     user.get 'tagged/:tag' do |username, tag|
-      @items = current_account.items.tagged(tag).paginate(page: params[:page])
-      @page_title = "#{current_account.name}'s Shelf | Tagged #{tag}"
+      @items = current_account.items.tagged(params[:tag]).paginate(page: params[:page])
+      @page_title = "#{current_account.name}'s Shelf | Tagged #{params[:tag]}"
 
       haml :'items/index'
     end
