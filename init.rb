@@ -15,6 +15,8 @@ require 'carrierwave/orm/activerecord'
 require 'lilypad'
 require 'bebop'
 require 'resque'
+require 'rack/contrib'
+require 'rack/cache'
 
 begin
   require 'mysql'
@@ -42,6 +44,8 @@ class Main < Monk::Glue
   
   class << logger; alias :write :info; end
   use Rack::CommonLogger, logger
+  use Rack::ETag
+  use Rack::Cache, settings(:cache)
 
   helpers Twitter::Login::Helpers
   helpers WillPaginate::ViewHelpers::Base

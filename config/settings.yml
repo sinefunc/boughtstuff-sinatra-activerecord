@@ -4,6 +4,11 @@ defaults: &defaults
   :session:
     :key: "rack.session"
   
+  :cache:
+    :verbose:     true
+    :metastore:   "file:tmp/cache/rack"
+    :entitystore: "file:tmp/cache/rack"
+    
   :photos:
     :storage:   :file
     :root:      ':root/public'
@@ -39,4 +44,8 @@ defaults: &defaults
     :s3_bucket: 'assets.boughtstuff.com'
     :s3_access_key_id: "1K4Y2FT2FFD0WYZJYT02"
     :s3_secret_access_key: "qWCV1IOH/BkkqyrSMuL86/gzbnsC55QxAhy18uD/"
+
+  :cache:
+    :metastore:   "memcached://localhost:11211"
+    :entitystore: "memcached://localhost:11211"
 

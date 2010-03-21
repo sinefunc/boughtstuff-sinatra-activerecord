@@ -1,0 +1,15 @@
+- logged_in do
+  %ul.notList.colR.meta-nav
+    - not_viewing_own_account do
+      %li.colL.back-link
+        = link_to 'Back to your shelf', user_url(current_user)
+      - viewing_other_account do
+        %li.colL.back-link
+          = link_to t('back_to_persons_shelf', person: @account), user_url(@account)
+    %li.colL.logout-nav
+      = link_to 'Logout', logout_url
+
+- logged_out do
+  %ul.notList.colR.meta-nav      
+    %li.colL.login-nav
+      = link_to 'Login with Twitter', login_url

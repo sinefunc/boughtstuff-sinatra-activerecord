@@ -19,4 +19,8 @@ class Main
     self.current_user = nil
     redirect root_url
   end
+
+  post '/session/state' do
+    haml :'session/state', :layout => false
+  end
 end
