@@ -1,14 +1,13 @@
 /*Image Preloading*/
 
-html{background:url(../images/view-icn.png) -9999px -9999px no-repeat;}
-html{background:url(../images/like-icn.png) -9999px -9999px no-repeat;}
-html{background:url(../images/dm-icn.png) -9999px -9999px no-repeat;}
-html{background:url(../images/rt-icn.png) -9999px -9999px no-repeat;}
-html{background:url(../images/delete-icn.png) -9999px -9999px no-repeat;}
-html{background:url(../images/reply-icn.png) -9999px -9999px no-repeat;}
-html{background:url(../images/shine.png) -9999px -9999px no-repeat;}
-html{background:url(../images/body-bg.jpg) -9999px -9999px no-repeat;}
-html{background:none;}
+body {background:url(../images/view-icn.png) -9999px -9999px no-repeat;}
+body {background:url(../images/like-icn.png) -9999px -9999px no-repeat;}
+body {background:url(../images/dm-icn.png) -9999px -9999px no-repeat;}
+body {background:url(../images/rt-icn.png) -9999px -9999px no-repeat;}
+body {background:url(../images/delete-icn.png) -9999px -9999px no-repeat;}
+body {background:url(../images/reply-icn.png) -9999px -9999px no-repeat;}
+body {background:url(../images/shine.png) -9999px -9999px no-repeat;}
+body {background:url(../images/body-bg.jpg) -9999px -9999px no-repeat;}
 
 /*Main Styles*/
 
@@ -77,7 +76,7 @@ fieldset.boughtstuff-form input.text-input {background: none; padding: 10px; fon
 #shelf .shelf-items .shelf-item .item-details {position: absolute; bottom: -1px; left: 50%; margin-left: -80px;}
 #shelf .shelf-items .shelf-item .item-meta { padding:10px; background: url(../images/meta-bg.png) repeat; }
 #shelf .shelf-items .shelf-item .contact-avatar {display: inline-block; margin-bottom: 5px; margin-left: 5px;}
-#shelf .shelf-items .shelf-item .contact-avatar img {border: 1px solid #FFF;}
+#shelf .shelf-items .shelf-item .contact-avatar img {border: 1px solid #FFF; height: 48px !important; width: auto !important;}
 #shelf .shelf-items .shelf-item .item-meta .item-title {margin-bottom: 10px; padding-bottom: 10px; background: url(../images/title-groove.png) 0 100% repeat-x; margin-bottom: 10px; color: #FFF; font-weight: normal;}
 #shelf .shelf-items .shelf-item .item-meta .item-title a {color: #CCC; text-decoration: none; font-size: 12px; font-weight: normal;}
 #shelf .shelf-items .shelf-item .item-meta .item-title a.contact-link {color: #30B439 !important;}
