@@ -13,20 +13,9 @@ class TwitterStatusUpdate
   
   @queue = :twitter
 
-  def self.perform( attrs = {} )
-    status_update = new( attrs )
-    status_update.save
-  end
-
   def self.create( attrs = {} )
-    if sender = attrs.delete(:sender)
-      attrs[:sender_id] = sender.id
-    end
-
-    Resque.enqueue( self, attrs )
-    'deferred'
-    # status_update = new( attrs )  
-    # status_update.save ? status_update.id : nil
+    status_update = new( attrs )  
+    status_update.save ? status_update.id : nil
   end
 
   def initialize(attributes = {})

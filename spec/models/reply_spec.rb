@@ -26,7 +26,23 @@ describe Reply, "by cyx with a body of @cyx" do
   it { should have_an_invalid(:body) }
 end
 
-describe Reply, "on save" do
+describe Reply, "on save when done async" do
+  before( :each ) do
+    @user = Factory(:user)
+    @item = Factory(:item, :user => @user)
+    
+    @reply = Reply.new(:item => @item, :sender => @user, :body => "@user hello world")
+  end
+
+  it "should enqueue the reply body, sender_id, and item_id" do
+    Resque.should_receive(:enqueue).with(
+      Reply, "@user hello world", @user.id, @item.id
+    )
+
+    @reply.save(:async)
+  end
+end
+describe Reply, "on save when done synchronously" do
   before(:each) do
     user = Factory(:user)
     item = Factory.build(:item, :user => user)
@@ -35,7 +51,7 @@ describe Reply, "on save" do
   end
 
   it "should set the id to the status id" do
-    @reply.save!
+    @reply.save( :sync )
     @reply.id.should_not be_nil
   end
 
