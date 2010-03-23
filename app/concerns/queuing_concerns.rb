@@ -4,7 +4,7 @@ module QueuingConcerns
   end
 
   module ClassMethods
-    def perform(body, item_id, sender_id)
+    def perform(body, sender_id, item_id)
       item, sender = Item.find(item_id), User.find(sender_id)
 
       model = new(:body => body, :item => item, :sender => sender)
