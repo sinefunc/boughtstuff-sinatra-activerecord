@@ -88,7 +88,7 @@ fieldset.boughtstuff-form input.text-input {background: none; padding: 10px; fon
 #shelf .shelf-items .shelf-item .item-meta .item-price, #shelf .shelf-items .shelf-item .item-meta .item-price * {text-decoration: none; border: 0; color: #30B439; font-weight: bold;}
 #shelf .shelf-items .shelf-item .item-actions {position: absolute; right: -5px; background: url(../images/item-actions-icn.png) no-repeat; height: 30px; width: 30px; bottom: 3px; padding-left: 6px; cursor: pointer;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook {position: relative; z-index: 10;}
-#shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu {position: absolute; bottom: -30px; right: -60px; background: #E5E5E5;  padding: 5px 5px 0 5px; -moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px; visibility: hidden;; width: 50px;}
+#shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu {position: absolute; bottom: -30px; right: -60px; background: #E5E5E5;  padding: 5px 5px 0 5px; -moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px; display: none; width: 50px;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li {border-bottom: 1px solid transparent; padding: 5px 3px 5px 5px; text-align: center; margin-bottom: 5px;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li a {font-size: 10px; text-transform: uppercase; text-decoration: none; color: #656565; display: block; font-family: helvetica, verdana, arial, sans-serif;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li.view-item a {background: url(../images/view-icn.png) 50% 4px no-repeat; padding-top: 20px; }
@@ -100,7 +100,8 @@ fieldset.boughtstuff-form input.text-input {background: none; padding: 10px; fon
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li:hover {background-color: #CCC;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px; border-bottom: 1px solid #FFF;}
 #shelf .shelf-items .shelf-item .item-actions li.action-hook .actions-menu li:hover a {color: #333;}
 #shelf .shelf-items .shelf-item:hover .item-actions {background-position: 0 -30px;}
-#shelf .shelf-items .shelf-item:hover .actions-menu {visibility: visible !important;}
+#shelf .shelf-items .shelf-item:hover .item-actions li.action-hook .actions-menu {display: block;}
+#shelf .shelf-items .shelf-item:hover + .shelf-item {z-index: 1 !important;}
 
 .pagination {position: absolute; width: 960px; padding: 0; list-style: none; }
 .pagination li {float: left; margin-left: 0px; margin-right: 3px; line-height: 38px; padding: 0;padding-left: 10px; text-align: center;}
