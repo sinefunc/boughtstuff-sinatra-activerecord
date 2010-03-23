@@ -3,6 +3,15 @@
 	  $.ajaxSettings.accepts._default = "text/javascript, text/html, application/xml, text/xml, */*";
     
     $('form.remote-form').remoteForm();
+
+    $.ajax({
+      'url': '/session/state',
+      'dataType': 'html',
+      'type': 'post',
+      'success': function(data) {
+        $('#session-state').append(data);
+      }
+    });
     
     $('.delete-item a').click(function() {
       if (window.confirm('Are you sure you want to delete this item?')) {
