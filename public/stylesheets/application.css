@@ -72,7 +72,7 @@ fieldset.boughtstuff-form input.text-input {background: none; padding: 10px; fon
 #shelf .shelf-items .shelf-item {height: 200px; background: 50% 0 url(../images/item-shadow.png) no-repeat; position: relative; margin-bottom: 43px;}
 #shelf .shelf-items .shelf-item .item-link {display: block; width: 160px; margin: 0 auto;-moz-border-radius-topright:3px;-moz-border-radius-topleft:3px; outline: 1px solid transparent; }
 #shelf .shelf-items .shelf-item .item-link img {display: block; margin: 6px auto !important;border-top-left-radius:3px;-webkit-border-top-left-radius:3px; border-top-right-radius:3px;-webkit-border-top-right-radius:3px;}
-#shelf .shelf-items .shelf-item .item-link:after { content: ""; background: url(../images/shine.png) no-repeat; position: absolute !important; height: 115px; width: 159px; display: block !important; left: 10px; z-index: 10; top: 6px}
+#shelf .shelf-items .shelf-item .item-link:before { content: ""; background: url(../images/shine.png) no-repeat; position: absolute !important; height: 115px; width: 159px; display: block !important; left: 10px;}
 #shelf .shelf-items .shelf-item .item-details {position: absolute; bottom: -1px; left: 50%; margin-left: -80px;}
 #shelf .shelf-items .shelf-item .item-meta { padding:10px; background: url(../images/meta-bg.png) repeat; }
 #shelf .shelf-items .shelf-item .contact-avatar {display: inline-block; margin-bottom: 5px; margin-left: 5px;}
