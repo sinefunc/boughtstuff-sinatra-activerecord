@@ -61,4 +61,35 @@ describe Purchase, "with an Item of 140 chars by abcdefghijklmno with 10 digits"
   }
 end
 
+describe Purchase, "with an Item and a description got it in thanks giving" do
+  subject do
+    item = Factory.build(:item, :name => "Magic Mouse",
+                         :description => "Got it in thanks giving",
+                         :user => Factory(:user, :login => "cyx"))
+    
+    item.id = 1001
+    item.save!
 
+    Purchase.new(:item => item, :sender => item.user)
+  end
+
+  its(:body) { 
+    should == "Got it in thanks giving http://boughtstuff.com/cyx#1001 #boughtstuff" 
+  }
+end
+
+describe Purchase, "with an Item and a description Lorem..." do
+  subject do
+    item = Factory.build(:item, :name => "Magic Mouse",
+                         :description => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                         :user => Factory(:user, :login => "abcdefghijklmno"))
+    
+    item.id = 1000000000
+    item.save!
+
+    Purchase.new(:item => item, :sender => item.user)
+  end
+
+  its(:body) { subject.length.should == 139 }
+  its(:body) { should == "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tem http://boughtstuff.com/abcdefghijklmno#1000000000 #boughtstuff" }
+end
