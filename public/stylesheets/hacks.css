@@ -23,7 +23,7 @@
 }
 
 body:-moz-last-node .submitBtn {padding: 0 18px 0 0;}
-body:-moz-last-node #shelf .shelf-items .shelf-item .item-link:before {display: none !important;}
+body:-moz-last-node #shelf .shelf-items .shelf-item .item-link:before {content: none !important;}
 
 
 * + html .boughtstuff-form .text-input {width: 560px !important;}
