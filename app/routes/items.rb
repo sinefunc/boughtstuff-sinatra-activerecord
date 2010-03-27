@@ -14,8 +14,6 @@ class Main
       @items = current_account.items.latest.paginate(page: params[:page])
       @page_title = "Everyone's Items"
 
-      cache_control :public, :must_revalidate, :max_age => 60
-
       haml :'items/index'
     end
 
@@ -23,16 +21,12 @@ class Main
       @items = current_account.items.most_viewed.paginate(page: params[:page])
       @page_title = "Most Popular Items"
 
-      cache_control :public, :must_revalidate, :max_age => 60
-
       haml :'items/index'
     end
 
     everyone.get 'liked' do
       @items = current_account.likes_items.paginate(page: params[:page])
       @page_title = "Most Liked Items"
-
-      cache_control :public, :must_revalidate, :max_age => 60
 
       haml :'items/index'
     end

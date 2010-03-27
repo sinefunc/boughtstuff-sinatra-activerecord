@@ -1,9 +1,13 @@
 class Reply
   include StatusUpdateConcerns
+  include QueuingConcerns
 
   template "@:username "
 
   validate :body_has_other_content
+  
+  @queue = :twitter
+
 
   private
     def body_has_other_content
