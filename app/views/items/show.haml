@@ -1,3 +1,6 @@
+:plain
+  <SCRIPT charset="utf-8" type="text/javascript" src="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&MarketPlace=US&ID=V20070822/US/bougstuf-20/8005/557c893b-7a65-449b-ac11-c95b1c09c8ee"> </SCRIPT> <NOSCRIPT><A HREF="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Fbougstuf-20%2F8005%2F557c893b-7a65-449b-ac11-c95b1c09c8ee&Operation=NoScript">Amazon.com Widgets</A></NOSCRIPT>
+
 .clearFix.col16-2.centerize.single-item-card
   .clearFix.single-item-title
     %h2.col12-0.colL
@@ -68,6 +71,9 @@
       - @item.tags.each do |tag|
         %li.colL
           %a{ :href => tagged_items_path(@item.user, tag.name) }= tag.name
+    %p{style: 'margin-top: 20px;'}
+      %a{type: 'amzn', search: @item.name, style: 'color:#333;'} Search this item in Amazon
+
 
 #item-image
   =link_to 'close this', 'javascript:void(0);', :rel=>"ubox-close", :class => "ubox-close"
