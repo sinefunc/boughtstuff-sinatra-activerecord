@@ -5,6 +5,7 @@
         %li.colL.col3-2.shelf-item{ :class => ('highlight' if item.new?) }[item]
           - if item.new?
             %em.ir.new-item-badge New Item
+
           %a.item-link{ :href => item_path(item), :title => item.name }
             = image_tag item.photo.url(:thumb), :alt => item.name
           .item-details

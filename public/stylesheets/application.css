@@ -192,3 +192,5 @@ span.tool-tip a {color: #FFF;-moz-border-radius:3px;-webkit-border-radius:3px;bo
 .footer .sinefunc-brand {margin-right: 10px !important;}
 .footer .sinefunc-brand a {padding-top: 36px; background: url(../images/sinefunc-brand.png) no-repeat; width: 176px; margin-bottom: 10px;}
 .footer .copyright {line-height: 36px;}
+
+#fdbk_tab {bottom: 55%; top: auto !important;}
