@@ -1,7 +1,7 @@
 development:
   strategy: oauth
-  oauth_consumer_key: 45Hgz2NJRhHOH2uSmhfyhg
-  oauth_consumer_secret: PrMnB5WNnmXwAjw3UtlvnGYESeiXlBkA5hhw0PFi4Lo 
+  oauth_consumer_key: key
+  oauth_consumer_secret: secret 
   base_url: "https://twitter.com"
   authorize_path: "/oauth/authenticate"
   api_timeout: 10
@@ -22,10 +22,10 @@ cucumber:
 
 production:
   strategy: oauth
-  oauth_consumer_key: 45Hgz2NJRhHOH2uSmhfyhg
-  oauth_consumer_secret: PrMnB5WNnmXwAjw3UtlvnGYESeiXlBkA5hhw0PFi4Lo 
+  oauth_consumer_key: key
+  oauth_consumer_secret: secret 
   authorize_path: "/oauth/authenticate"
   base_url: "https://twitter.com"
   api_timeout: 10
   remember_for: 14 # days
-  oauth_callback: "http://www.boughtstuff.com/oauth_callback"
+  oauth_callback: "http://localhost:3000/oauth_callback"
