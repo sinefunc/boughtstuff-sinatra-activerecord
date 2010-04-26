@@ -30,7 +30,8 @@ module StatusUpdateConcerns
     attrs.each { |field, value| write(field, value) }
 
     if @item and @body.blank?
-      template = render(:url => ItemUrl.make(@item), :username => @item.user.login)
+      template = render(:url => ItemUrl.make(@item), :username => @item.user.login,
+                        :content => content)
       self.body = sprintf(template, @item.to_s)
     end
   end
@@ -73,6 +74,10 @@ module StatusUpdateConcerns
 
   def item_id=( item_id )
     self.item = Item.find(item_id)
+  end
+
+  def content
+    ""
   end
 
   private
